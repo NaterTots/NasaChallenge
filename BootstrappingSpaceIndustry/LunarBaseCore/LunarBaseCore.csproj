@@ -43,7 +43,10 @@
     <Compile Include="ConfigurationManager.cs" />
     <Compile Include="InventoryManager.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="Logging\DiagnosticsLogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomGenerator.cs" />
     <Compile Include="ResourceType.cs" />
     <Compile Include="ServiceManager.cs" />
   </ItemGroup>

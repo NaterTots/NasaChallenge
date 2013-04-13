@@ -16,9 +16,9 @@ namespace LunarBaseCore
     public enum ServiceType
     {
         InventoryManager,
-        ConfigurationManager
-        //RandomGenerator,
-        //Logger,
+        ConfigurationManager,
+        RandomGenerator,
+        Logger
         //Game,
         //TextureManager
     }
