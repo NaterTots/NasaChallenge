@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarBaseCore", "LunarBaseSimulation\LunarBaseCore.csproj", "{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
