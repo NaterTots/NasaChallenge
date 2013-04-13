@@ -43,6 +43,30 @@ namespace LunarBaseCore
             return (T)GetService(type);
         }
 
+		/// <summary>
+		/// Allows you to retrieve a service based only on the type. This assumes that will only ever be one Service of a given type.
+		/// </summary>
+		public T GetService<T>() where T : class, IService
+		{
+			T retService = null;
+
+			foreach (IService service in this)
+			{
+				retService = service as T;
+				if (retService != null)
+				{
+					break;
+				}
+			}
+
+			if (retService == null)
+			{
+				throw new Exception("Unable to obtain Service");
+			}
+
+			return retService;
+		}
+
         public void Initialize()
         {
             foreach (IService service in this)
