@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LunarBaseSimulation\LunarBaseCore.csproj">
+    <ProjectReference Include="..\LunarBaseCore\LunarBaseCore.csproj">
       <Project>{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}</Project>
       <Name>LunarBaseCore</Name>
     </ProjectReference>
