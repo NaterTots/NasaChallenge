@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Entities\EntityManagerBase.cs" />
+    <Compile Include="Entities\LoadableEntity.cs" />
     <Compile Include="InventoryManager.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Logging\DiagnosticsLogger.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="ResourceType.cs" />
     <Compile Include="ServiceManager.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
