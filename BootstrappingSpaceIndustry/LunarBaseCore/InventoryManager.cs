@@ -16,7 +16,7 @@ namespace LunarBaseCore
             //throw new NotImplementedException();
         }
 
-        public void Finalize()
+		public void Cleanup()
         {
             //throw new NotImplementedException();
         }

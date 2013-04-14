@@ -35,7 +35,7 @@ namespace LunarBaseCore
             return ServiceType.RandomGenerator;
         }
 
-        public void Finalize()
+		public void Cleanup()
         {
             
         }

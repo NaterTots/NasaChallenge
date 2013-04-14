@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LunarBaseCore.Entities
+namespace LunarBaseCore.EntityLoading
 {
 	/// <summary>
 	///  Derive from this class for any objects that will be loaded from XML

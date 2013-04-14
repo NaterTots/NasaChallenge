@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LunarBaseCore.EntityLoading;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,6 @@ namespace LunarBaseCore
 {
     public class ConfigurationManager : IService
     {
-        //TODO: is there a cleaner way to keep these lists or is this acceptable?
-        private List<ResourceType> _resourceTypes = new List<ResourceType>();
 
         public void Initialize()
         {
@@ -16,7 +15,7 @@ namespace LunarBaseCore
             //throw new NotImplementedException();
         }
 
-        public void Finalize()
+		public void Cleanup()
         {
             //TODO:anything necessary?
             //throw new NotImplementedException();
@@ -29,15 +28,16 @@ namespace LunarBaseCore
 
         #region Resource Types
 
-        public void AddResourceType(ResourceType newResourceType)
-        {
-            _resourceTypes.Add(newResourceType);
-        }
+		// We're now loading resources from xml - do we need to add in this manner? RJW
+		//public void AddResourceType(ResourceType newResourceType)
+		//{
+		//	_resourceTypes.Add(newResourceType);
+		//}
 
-        public void AddResourceType(string name)
-        {
-            _resourceTypes.Add(new ResourceType(name));
-        }
+		//public void AddResourceType(string name)
+		//{
+		//	_resourceTypes.Add(new ResourceType(name));
+		//}
 
         /// <summary>
         /// 
@@ -47,15 +47,7 @@ namespace LunarBaseCore
         /// <returns></returns>
         public ResourceType GetResourceType(string name)
         {
-            foreach (ResourceType rt in _resourceTypes)
-            {
-                if (rt.ResourceName.CompareTo(name) == 0)
-                {
-                    return rt;
-                }
-            }
-
-            throw new ArgumentException(name);
+			return ServiceManager.Instance.GetService<ResourceManager>().Find(name);
         }
 
         #endregion

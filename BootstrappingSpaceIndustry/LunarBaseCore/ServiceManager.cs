@@ -17,31 +17,31 @@ namespace LunarBaseCore
             }
         }
 
-        public IService GetService(ServiceType type)
-        {
-            IService retVal = null;
+		//public IService GetService(ServiceType type)
+		//{
+		//	IService retVal = null;
 
-            foreach (IService service in this)
-            {
-                if (service.GetServiceType() == type)
-                {
-                    retVal = service;
-                    break;
-                }
-            }
+		//	foreach (IService service in this)
+		//	{
+		//		if (service.GetServiceType() == type)
+		//		{
+		//			retVal = service;
+		//			break;
+		//		}
+		//	}
 
-            if (retVal == null)
-            {
-                throw new Exception("Unable to obtain Service of type: " + type.ToString());
-            }
+		//	if (retVal == null)
+		//	{
+		//		throw new Exception("Unable to obtain Service of type: " + type.ToString());
+		//	}
 
-            return retVal;
-        }
+		//	return retVal;
+		//}
 
-        public T GetService<T>(ServiceType type)
-        {
-            return (T)GetService(type);
-        }
+		//public T GetService<T>(ServiceType type)
+		//{
+		//	return (T)GetService(type);
+		//}
 
 		/// <summary>
 		/// Allows you to retrieve a service based only on the type. This assumes that will only ever be one Service of a given type.
@@ -75,11 +75,11 @@ namespace LunarBaseCore
             }
         }
 
-        public void Finalize()
+		public void Cleanup()
         {
             foreach (IService service in this)
             {
-                service.Finalize();
+				service.Cleanup();
             }
         }
 

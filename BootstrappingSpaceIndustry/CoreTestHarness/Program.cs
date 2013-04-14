@@ -12,24 +12,28 @@ namespace CoreTestHarness
         static void Main(string[] args)
         {
             //ServiceManager - Construction
-            ServiceManager serviceManager = new ServiceManager();
-            serviceManager.Add(new LogManager());
-            serviceManager.Add(new ConfigurationManager());
-            serviceManager.Add(new RandomGenerator());
-            serviceManager.Add(new InventoryManager());
+			ServiceManager.Instance.Add(new LogManager());
+			ServiceManager.Instance.Add(new ConfigurationManager());
+			ServiceManager.Instance.Add(new RandomGenerator());
+			ServiceManager.Instance.Add(new InventoryManager());
+			ServiceManager.Instance.Add(new ResourceManager());
 
             //ServiceManager - Initialization
-            serviceManager.Initialize();
+			ServiceManager.Instance.Initialize();
+
+			// Load resources from XML
+			ServiceManager.Instance.GetService<ResourceManager>().Load("xml/resources.xml");
 
             //Add test data to configuration manager
-            ConfigurationManager configurationManager = serviceManager.GetService<ConfigurationManager>(ServiceType.ConfigurationManager);
-            configurationManager.AddResourceType(new ResourceType("Money"));
-            configurationManager.AddResourceType(new ResourceType("Iron"));
-            configurationManager.AddResourceType(new ResourceType("Electricity"));
+			ConfigurationManager configurationManager = ServiceManager.Instance.GetService<ConfigurationManager>();
+			// Loading from xml
+			//configurationManager.AddResourceType(new ResourceType("Money"));
+			//configurationManager.AddResourceType(new ResourceType("Iron"));
+			//configurationManager.AddResourceType(new ResourceType("Electricity"));
 
 
             //Initialize inventory
-            InventoryManager inventoryManager = serviceManager.GetService<InventoryManager>(ServiceType.InventoryManager);
+			InventoryManager inventoryManager = ServiceManager.Instance.GetService<InventoryManager>();
             inventoryManager.AddResources(configurationManager.GetResourceType("Money"), 1000);
             inventoryManager.AddResources(configurationManager.GetResourceType("Iron"), 50);
             inventoryManager.AddResources(configurationManager.GetResourceType("Electricity"), 220);
@@ -40,7 +44,7 @@ namespace CoreTestHarness
 
             foreach (KeyValuePair<ResourceType, long> inventory in inventoryManager.GetInventory())
             {
-                Console.WriteLine("{0}: {1}", inventory.Key.ResourceName, inventory.Value);
+                Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.Scarcity, inventory.Key.Acquired, inventory.Value);
             }
             Console.WriteLine();
 
@@ -55,12 +59,12 @@ namespace CoreTestHarness
 
             foreach (KeyValuePair<ResourceType, long> inventory in inventoryManager.GetInventory())
             {
-                Console.WriteLine("{0}: {1}", inventory.Key.ResourceName, inventory.Value);
+                Console.WriteLine("{0}: {1}", inventory.Key.Name, inventory.Value);
             }
             Console.WriteLine();
 
             //Test Random Number generator
-            RandomGenerator randomGenerator = serviceManager.GetService<RandomGenerator>(ServiceType.RandomGenerator);
+			RandomGenerator randomGenerator = ServiceManager.Instance.GetService<RandomGenerator>();
             
             Console.WriteLine("Generating 10 Random Integers under 10000:");
             for (int i = 0; i < 10; i++)
@@ -84,14 +88,14 @@ namespace CoreTestHarness
             Console.WriteLine();
 
             //Testing error handling
-            ILogger logger = serviceManager.GetService<ILogger>(ServiceType.Logger);
+			LogManager logger = ServiceManager.Instance.GetService<LogManager>();
 
             logger.Log(new ArgumentException("invalid argument exception"));
             logger.Log("This is a statement we need to log");
             logger.Log(new FormatException("invalid format exception"), "format invalid dummy");
 
             //Clean up
-            serviceManager.Finalize();
+			ServiceManager.Instance.Cleanup();
 
             Console.ReadLine();
         }

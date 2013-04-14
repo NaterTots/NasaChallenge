@@ -50,7 +50,7 @@ namespace LunarBaseCore
             }
         }
 
-        public void Finalize()
+		public void Cleanup()
         {
             
         }

@@ -8,7 +8,7 @@ namespace LunarBaseCore
     public interface IService
     {
         void Initialize();
-        void Finalize();
+        void Cleanup();
 
         ServiceType GetServiceType();
     }
@@ -17,6 +17,7 @@ namespace LunarBaseCore
     {
         InventoryManager,
         ConfigurationManager,
+		ResourceManager,
         RandomGenerator,
         Logger
         //Game,

@@ -41,8 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationManager.cs" />
-    <Compile Include="Entities\EntityManagerBase.cs" />
-    <Compile Include="Entities\LoadableEntity.cs" />
+    <Compile Include="EntityLoading\EntityManagerBase.cs" />
+    <Compile Include="EntityLoading\LoadableEntity.cs" />
+    <Compile Include="ResourceManager.cs" />
     <Compile Include="InventoryManager.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Logging\DiagnosticsLogger.cs" />
