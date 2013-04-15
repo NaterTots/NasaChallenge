@@ -43,6 +43,7 @@
     <Compile Include="ConfigurationManager.cs" />
     <Compile Include="EntityLoading\EntityManagerBase.cs" />
     <Compile Include="EntityLoading\LoadableEntity.cs" />
+    <Compile Include="LunarTime.cs" />
     <Compile Include="ResourceManager.cs" />
     <Compile Include="InventoryManager.cs" />
     <Compile Include="IService.cs" />
