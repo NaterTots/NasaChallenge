@@ -5,6 +5,10 @@ using System.Text;
 
 namespace LunarBaseCore.Item
 {
+    /// <summary>
+    /// Stores the instance data of an Item.
+    /// Should reference the corresponding ItemTypeBase class so an Item can validate itself upon loading from the xml that all properties are valid.
+    /// </summary>
     public class ItemBase
     {
     }
