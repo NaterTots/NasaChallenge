@@ -42,9 +42,9 @@ namespace CoreTestHarness
             Console.WriteLine("Adding 220 Electricity");
             Console.WriteLine();
 
-            foreach (KeyValuePair<ResourceType, long> inventory in inventoryManager.GetInventory())
+            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetInventory())
             {
-                Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.Scarcity, inventory.Key.Acquired, inventory.Value);
+                Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.ResourceScarcity, inventory.Key.Acquired, inventory.Value);
             }
             Console.WriteLine();
 
@@ -57,7 +57,7 @@ namespace CoreTestHarness
             Console.WriteLine("Removing 300 Electricity, regardless.");
             Console.WriteLine();
 
-            foreach (KeyValuePair<ResourceType, long> inventory in inventoryManager.GetInventory())
+            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetInventory())
             {
                 Console.WriteLine("{0}: {1}", inventory.Key.Name, inventory.Value);
             }

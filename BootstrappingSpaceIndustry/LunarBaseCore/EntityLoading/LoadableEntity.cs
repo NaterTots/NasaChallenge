@@ -6,7 +6,7 @@ using System.Text;
 namespace LunarBaseCore.EntityLoading
 {
 	/// <summary>
-	///  Derive from this class for any objects that will be loaded from XML
+	///  UNUSED!
 	/// </summary>
 	public class LoadableEntity : IEquatable<LoadableEntity>
 	{

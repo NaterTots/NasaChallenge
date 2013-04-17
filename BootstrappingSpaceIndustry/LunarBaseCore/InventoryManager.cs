@@ -8,7 +8,7 @@ namespace LunarBaseCore
     public class InventoryManager : IService
     {
         //TODO: should this be keyed by type or type ID?
-        Dictionary<ResourceType, long> _inventory = new Dictionary<ResourceType, long>();
+        Dictionary<ResourceItemType, long> _inventory = new Dictionary<ResourceItemType, long>();
 
         public void Initialize()
         {
@@ -27,7 +27,7 @@ namespace LunarBaseCore
         }
 
         //TODO: should this be by ResourceType or TypeID?
-        public bool HasEnoughResources(ResourceType rt, long quantity)
+        public bool HasEnoughResources(ResourceItemType rt, long quantity)
         {
             bool hasEnough = false;
 
@@ -40,7 +40,7 @@ namespace LunarBaseCore
         }
 
         //TODO: should this be by ResourceType or TypeID?
-        public void AddResources(ResourceType rt, long quantity)
+        public void AddResources(ResourceItemType rt, long quantity)
         {
             if (_inventory.ContainsKey(rt))
             {
@@ -60,7 +60,7 @@ namespace LunarBaseCore
         /// <param name="removeRegardlessOfQuantity">If TRUE and the quantity is larger than the inventory, it will zero out inventory.  Otherwise, nothing will be removed.</param>
         /// <returns>TRUE if the inventory contained adequate resources, FALSE if it did not.  If removeRegardlessOfQuantity is set to true, the removal will still take place even if FALSE is returned.</returns>
         //TODO: should this be by ResourceType or TypeID?
-        public bool RemoveResources(ResourceType rt, long quantity, bool removeRegardlessOfQuantity = false)
+        public bool RemoveResources(ResourceItemType rt, long quantity, bool removeRegardlessOfQuantity = false)
         {
             bool retVal = false;
 
@@ -83,11 +83,11 @@ namespace LunarBaseCore
             return retVal;
         }
 
-        public System.Collections.Generic.IEnumerable<KeyValuePair<ResourceType, long>> GetInventory()
+        public System.Collections.Generic.IEnumerable<KeyValuePair<ResourceItemType, long>> GetInventory()
         {
-            foreach (KeyValuePair<ResourceType, long> item in _inventory)
+            foreach (KeyValuePair<ResourceItemType, long> item in _inventory)
             {
-                yield return new KeyValuePair<ResourceType, long>(item.Key, item.Value);
+                yield return new KeyValuePair<ResourceItemType, long>(item.Key, item.Value);
             }
         }
     }

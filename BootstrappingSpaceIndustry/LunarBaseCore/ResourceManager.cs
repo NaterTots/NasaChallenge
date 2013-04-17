@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace LunarBaseCore
 {
-	public class ResourceManager : EntityManagerBase<ResourceType>, IService
+	public class ResourceManager : EntityManagerBase<ResourceItemType>, IService
 	{
 
 		protected override string NodeName
@@ -18,22 +18,10 @@ namespace LunarBaseCore
 			}
 		}
 
-		protected override void LoadEntityFromNode(XElement node, ResourceType entity)
+		protected override void LoadEntityFromNode(XElement node, ResourceItemType entity)
 		{
-			XAttribute attr = node.Attribute("scarcity");
-			Scarcity scarcity;
-			if (attr != null && Enum.TryParse<Scarcity>(attr.Value, out scarcity))
-			{
-				entity.Scarcity = scarcity;
-				//ServiceManager.Instance.GetService<LogManager>().Log("Unknown Scarcity type: " + attr.Value);
-			}
+			// The base already loads all the properties - do we need to load anything else?
 
-			attr = node.Attribute("acquiredBy");
-			AcquisitionMethod acquire;
-			if (attr != null && Enum.TryParse<AcquisitionMethod>(attr.Value, out acquire))
-			{
-				entity.Acquired = acquire;
-			}
 		}
 
 		#region IService Members

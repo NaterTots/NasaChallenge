@@ -1,4 +1,5 @@
 ﻿using LunarBaseCore.EntityLoading;
+using LunarBaseCore.ItemType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,30 +25,26 @@ namespace LunarBaseCore
     /// <summary>
     /// Everything costs resources or creates resources.  This defines the different resource types.
     /// </summary>
-    public class ResourceType : LoadableEntity
+    public class ResourceItemType : ItemTypeBase
     {
-		//private static int resourceID = 1;
-
-		////TODO: what all do we need in order to define a resource?
-		//private string _resourceName;
-		//public string ResourceName { get { return _resourceName; } }
-		//private int _resourceID;
-		//public int ResourceID { get { return _resourceID; } }
-
-		// I don't know if we actually need these properties, but I wanted to test with some
-		public Scarcity Scarcity
+		// I don't know if we actually need these properties, but I wanted some for testing
+		public Scarcity ResourceScarcity
 		{
-			get;
-			set;
+			get
+			{
+				return (Scarcity)Enum.Parse(typeof(Scarcity), GetProperty("scarcity"));
+			}
 		}
 
 		public AcquisitionMethod Acquired
 		{
-			get;
-			set;
+			get
+			{
+				return (AcquisitionMethod)Enum.Parse(typeof(AcquisitionMethod), GetProperty("acquiredBy"));
+			}
 		}
 
-        public ResourceType()
+        public ResourceItemType()
         {
             //Name = name;
             //_resourceID = resourceID++;

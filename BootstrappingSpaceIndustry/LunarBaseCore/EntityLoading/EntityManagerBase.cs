@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LunarBaseCore.ItemType;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace LunarBaseCore.EntityLoading
 	/// This page gives an overview of using Linq to XML (XDocument, used below): http://www.hookedonlinq.com/LINQtoXML5MinuteOverview.ashx
 	/// </summary>
 	public abstract class EntityManagerBase<T> 
-		where T : LoadableEntity, new()
+		where T : ItemTypeBase, new()
 	{
-		private List<LoadableEntity> _allEntities = new List<LoadableEntity>();
+		private List<ItemTypeBase> _allEntities = new List<ItemTypeBase>();
 
 		#region Protected Items that can/must be overridden
 		/// <summary>
@@ -53,14 +54,15 @@ namespace LunarBaseCore.EntityLoading
 				foreach (XElement node in nodes)
 				{
 					T entity = new T();
-					
-					// Get attributes that every node should have
-					XAttribute nameAttr = node.Attribute("name");
-					if (nameAttr != null)
-					{
-						entity.Name = nameAttr.Value;
-					}
+					// Load all attrs - saves us from having to add code for each new attribute
+					addAllAttributes(node, entity);
 
+					//// Get attributes that every node should have
+					//XAttribute nameAttr = node.Attribute("name");
+					//if (nameAttr != null)
+					//{
+					//	entity.Name = nameAttr.Value;
+					//}
 					LoadEntityFromNode(node, entity);
 
 					_allEntities.Add(entity);
@@ -71,6 +73,14 @@ namespace LunarBaseCore.EntityLoading
 				ServiceManager.Instance.GetService<LogManager>().Log("Cannot load XML, file does not exist: " + xmlFile);
 			}
 			
+		}
+
+		private void addAllAttributes(XElement node, ItemTypeBase itemType)
+		{
+			foreach (XAttribute attr in node.Attributes())
+			{
+				itemType.SetProperty(attr.Name.ToString(), attr.Value);
+			}
 		}
 
 		/// <summary>

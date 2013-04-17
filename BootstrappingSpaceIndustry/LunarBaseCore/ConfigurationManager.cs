@@ -45,7 +45,7 @@ namespace LunarBaseCore
         /// <param name="name"></param>
         /// <exception cref="">This throws an exception if the resource type doesn't exist.</exception>
         /// <returns></returns>
-        public ResourceType GetResourceType(string name)
+        public ResourceItemType GetResourceType(string name)
         {
 			return ServiceManager.Instance.GetService<ResourceManager>().Find(name);
         }
