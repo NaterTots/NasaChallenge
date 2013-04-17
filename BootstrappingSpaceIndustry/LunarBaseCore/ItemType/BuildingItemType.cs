@@ -7,5 +7,8 @@ namespace LunarBaseCore.ItemType
 {
     public class BuildingItemType : ItemTypeBase
     {
+		public BuildingItemType()
+		{
+		}
     }
 }
