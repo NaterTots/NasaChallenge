@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LunarBaseCore.Item
+namespace LunarBaseCore
 {
     /// <summary>
     /// Stores the instance data of an Item.

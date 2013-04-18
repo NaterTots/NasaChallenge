@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LunarBaseCore.Item
+namespace LunarBaseCore
 {
     public class BuildingItem : ItemBase
     {

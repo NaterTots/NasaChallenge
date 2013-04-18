@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LunarBaseCore.EntityLoading
+namespace LunarBaseCore
 {
 	/// <summary>
 	///  UNUSED!

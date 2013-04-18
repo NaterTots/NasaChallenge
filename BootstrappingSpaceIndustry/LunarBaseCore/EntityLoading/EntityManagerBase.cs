@@ -7,7 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace LunarBaseCore.EntityLoading
+namespace LunarBaseCore
 {
 	/// <summary>
 	/// Derive from this class when you need to load objects/entities/things from XML. 
