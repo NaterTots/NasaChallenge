@@ -23,13 +23,16 @@ namespace LunarBaseCore
         }
 
         //StructureEngine structs;
-        public EventHandler timerTicks;
+        public static EventHandler timerTicks;
         //Window mainWindow;
+
 
         static GameEngine()
         {
 
             //timerTicks.AddHandler(LunarTime.TimeTick, new RoutedEventHandler(OnTimerTick));
+            
+           
         }
 
         
@@ -37,6 +40,8 @@ namespace LunarBaseCore
         {
             totalTime = 0;
             timeEngine = new LunarTime();
+
+            //onTimerStart(this, new TickEventArgs(0));
 
             setMain();
         }
@@ -66,11 +71,7 @@ namespace LunarBaseCore
             //mainWindow = new PlayScreen();
         }
 
-        public void setLose()
-        {
-            currentState = gameState.loseScreen;
-            //mainWindow = new LoseScreen();
-        }
+
 
         //Start the game loop
         public void TurnStart()
@@ -78,16 +79,14 @@ namespace LunarBaseCore
             timeEngine.Start();
         }
 
-        
-
         //this is the game loop that starts when the user clicks go
-        private void OnTimerTick()
+        public void OnTimerTick(object o, EventArgs e)
         {
             totalTime += 1;
 
             if (totalTime >= intervals)
             {
-                timeEngine.Pause();
+                //timeEngine.Pause();
 
                 //structEngine.update(totalTime);
 
