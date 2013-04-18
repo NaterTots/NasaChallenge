@@ -34,30 +34,30 @@ namespace CoreTestHarness
 
             //Initialize inventory
 			InventoryManager inventoryManager = ServiceManager.Instance.GetService<InventoryManager>();
-            inventoryManager.AddResources(configurationManager.GetResourceType("Money"), 1000);
-            inventoryManager.AddResources(configurationManager.GetResourceType("Iron"), 50);
-            inventoryManager.AddResources(configurationManager.GetResourceType("Electricity"), 220);
+            inventoryManager.AddItems(configurationManager.GetResourceType("Money"), 1000);
+            inventoryManager.AddItems(configurationManager.GetResourceType("Iron"), 50);
+            inventoryManager.AddItems(configurationManager.GetResourceType("Electricity"), 220);
             Console.WriteLine("Adding 1000 Money");
             Console.WriteLine("Adding 50 Iron");
             Console.WriteLine("Adding 220 Electricity");
             Console.WriteLine();
 
-            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetInventory())
+            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetSpecificInventory<ResourceItemType>())
             {
                 Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.ResourceScarcity, inventory.Key.Acquired, inventory.Value);
             }
             Console.WriteLine();
 
             //Modify inventory
-            inventoryManager.RemoveResources(configurationManager.GetResourceType("Money"), 900);
-            inventoryManager.RemoveResources(configurationManager.GetResourceType("Iron"), 100);
-            inventoryManager.RemoveResources(configurationManager.GetResourceType("Electricity"), 300, true);
+            inventoryManager.RemoveItems(configurationManager.GetResourceType("Money"), 900);
+            inventoryManager.RemoveItems(configurationManager.GetResourceType("Iron"), 100);
+            inventoryManager.RemoveItems(configurationManager.GetResourceType("Electricity"), 300, true);
             Console.WriteLine("Removing 900 Money");
             Console.WriteLine("Removing 100 Iron");
             Console.WriteLine("Removing 300 Electricity, regardless.");
             Console.WriteLine();
 
-            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetInventory())
+            foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetSpecificInventory<ResourceItemType>())
             {
                 Console.WriteLine("{0}: {1}", inventory.Key.Name, inventory.Value);
             }

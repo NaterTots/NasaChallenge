@@ -8,7 +8,7 @@ namespace LunarBaseCore
     public class InventoryManager : IService
     {
         //TODO: should this be keyed by type or type ID?
-        Dictionary<ResourceItemType, long> _inventory = new Dictionary<ResourceItemType, long>();
+        Dictionary<ItemTypeBase, long> _inventory = new Dictionary<ItemTypeBase, long>();
 
         public void Initialize()
         {
@@ -27,7 +27,7 @@ namespace LunarBaseCore
         }
 
         //TODO: should this be by ResourceType or TypeID?
-        public bool HasEnoughResources(ResourceItemType rt, long quantity)
+        public bool HasEnoughItems(ItemTypeBase rt, long quantity)
         {
             bool hasEnough = false;
 
@@ -40,7 +40,7 @@ namespace LunarBaseCore
         }
 
         //TODO: should this be by ResourceType or TypeID?
-        public void AddResources(ResourceItemType rt, long quantity)
+        public void AddItems(ItemTypeBase rt, long quantity)
         {
             if (_inventory.ContainsKey(rt))
             {
@@ -53,14 +53,14 @@ namespace LunarBaseCore
         }
 
         /// <summary>
-        /// Removes the indicated resource quantity from the inventory
+        /// Removes the indicated item quantity from the inventory
         /// </summary>
         /// <param name="rt"></param>
         /// <param name="quantity"></param>
         /// <param name="removeRegardlessOfQuantity">If TRUE and the quantity is larger than the inventory, it will zero out inventory.  Otherwise, nothing will be removed.</param>
         /// <returns>TRUE if the inventory contained adequate resources, FALSE if it did not.  If removeRegardlessOfQuantity is set to true, the removal will still take place even if FALSE is returned.</returns>
         //TODO: should this be by ResourceType or TypeID?
-        public bool RemoveResources(ResourceItemType rt, long quantity, bool removeRegardlessOfQuantity = false)
+        public bool RemoveItems(ItemTypeBase rt, long quantity, bool removeRegardlessOfQuantity = false)
         {
             bool retVal = false;
 
@@ -83,11 +83,22 @@ namespace LunarBaseCore
             return retVal;
         }
 
-        public System.Collections.Generic.IEnumerable<KeyValuePair<ResourceItemType, long>> GetInventory()
+        public IEnumerable<KeyValuePair<ItemTypeBase, long>> GetInventory()
         {
-            foreach (KeyValuePair<ResourceItemType, long> item in _inventory)
+            foreach (KeyValuePair<ItemTypeBase, long> item in _inventory)
             {
-                yield return new KeyValuePair<ResourceItemType, long>(item.Key, item.Value);
+                yield return new KeyValuePair<ItemTypeBase, long>(item.Key, item.Value);
+            }
+        }
+
+        public IEnumerable<KeyValuePair<T, long>> GetSpecificInventory<T>() where T : ItemTypeBase
+        {
+            foreach (KeyValuePair<ItemTypeBase, long> item in _inventory)
+            {
+                if (item.Key.GetType() == typeof(T))
+                {
+                    yield return new KeyValuePair<T, long>((T)item.Key, item.Value);
+                }
             }
         }
     }

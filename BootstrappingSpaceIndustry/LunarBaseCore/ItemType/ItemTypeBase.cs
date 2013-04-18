@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
-namespace LunarBaseCore.ItemType
+namespace LunarBaseCore
 {
     /// <summary>
     /// Base class for all ItemType objects.  Defines all standard methods of an ItemType.
