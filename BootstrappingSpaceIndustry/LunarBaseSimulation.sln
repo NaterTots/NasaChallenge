@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreTestHarness", "CoreTestHarness\CoreTestHarness.csproj", "{C5D70054-CA4F-4D89-B570-8476731EADAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunarBaseCore", "LunarBaseCore\LunarBaseCore.csproj", "{DE97E63E-D306-4D29-A7F2-937E20E9FDAB}"
