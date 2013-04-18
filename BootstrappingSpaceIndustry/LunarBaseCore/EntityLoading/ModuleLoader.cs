@@ -6,14 +6,14 @@ using System.Xml.Linq;
 
 namespace LunarBaseCore
 {
-	public class ResourceManager : EntityManagerBase<ResourceItemType>, IService
+	public class ModuleLoader : EntityManagerBase<ResourceItemType>, IService
 	{
 
 		protected override string NodeName
 		{
 			get
 			{
-				return "resource";
+				return "module";
 			}
 		}
 

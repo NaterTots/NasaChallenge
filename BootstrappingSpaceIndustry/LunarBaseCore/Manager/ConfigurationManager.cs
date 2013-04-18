@@ -46,7 +46,7 @@ namespace LunarBaseCore
         /// <returns></returns>
         public ResourceItemType GetResourceType(string name)
         {
-			return ServiceManager.Instance.GetService<ResourceManager>().Find(name);
+			return ServiceManager.Instance.GetService<ResourceLoader>().Find(name);
         }
 
         #endregion

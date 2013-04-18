@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace LunarBaseCore
 {
-	public class ResourceManager : EntityManagerBase<ResourceItemType>, IService
+	public class ResourceLoader : EntityManagerBase<ResourceItemType>, IService
 	{
 
 		protected override string NodeName

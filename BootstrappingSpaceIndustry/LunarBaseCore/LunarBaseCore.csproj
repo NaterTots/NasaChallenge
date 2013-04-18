@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuildingManager.cs" />
-    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Manager\ConfigurationManager.cs" />
+    <Compile Include="EntityLoading\BuildingLoader.cs" />
     <Compile Include="EntityLoading\EntityManagerBase.cs" />
     <Compile Include="Enumerations.cs" />
     <Compile Include="GameEngine.cs" />
@@ -55,9 +55,9 @@
     <Compile Include="Item\ItemBase.cs" />
     <Compile Include="LunarTime.cs" />
     <Compile Include="Manager\BuildingManager.cs" />
-    <Compile Include="Manager\ModuleManager.cs" />
-    <Compile Include="Manager\ResourceManager.cs" />
-    <Compile Include="InventoryManager.cs" />
+    <Compile Include="EntityLoading\ModuleLoader.cs" />
+    <Compile Include="EntityLoading\ResourceLoader.cs" />
+    <Compile Include="Manager\InventoryManager.cs" />
     <Compile Include="IService.cs" />
     <Compile Include="Logging\DiagnosticsLogger.cs" />
     <Compile Include="Logging\Logger.cs" />
