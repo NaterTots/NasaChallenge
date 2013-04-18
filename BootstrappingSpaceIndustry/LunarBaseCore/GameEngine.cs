@@ -24,6 +24,7 @@ namespace LunarBaseCore
 
         //StructureEngine structs;
         public EventHandler timerTicks;
+        //Window mainWindow;
 
         static GameEngine()
         {
@@ -31,36 +32,13 @@ namespace LunarBaseCore
             //timerTicks.AddHandler(LunarTime.TimeTick, new RoutedEventHandler(OnTimerTick));
         }
 
-        //this is the game loop
+        
         public void RunGame()
         {
             totalTime = 0;
             timeEngine = new LunarTime();
-            currentState = gameState.mainMenu;
 
-            while (currentState != gameState.winScreen || currentState != gameState.loseScreen)
-            {
-                if (currentState == gameState.mainMenu)
-                {
-                    //mainWindow = new mainScreen();
-                }
-
-                else if (currentState == gameState.playing)
-                {
-                    //mainWindow = new PlayingScreen();
-                }
-
-                else if (currentState == gameState.loseScreen)
-                {
-                    //mainWindow = new LoseScreen();
-                }
-
-                else if (currentState == gameState.winScreen)
-                {
-                    //mainWindow = new WinScreen();
-                }
-            }
-
+            setMain();
         }
 
         public void setWin()
@@ -76,11 +54,33 @@ namespace LunarBaseCore
             //mainWindow = new LoseScreen();
         }
 
+        public void setPlaying()
+        {
+            currentState = gameState.playing;
+            //mainWindow = new PlayScreen();
+        }
+
+        public void setMain()
+        {
+            currentState = gameState.mainMenu;
+            //mainWindow = new PlayScreen();
+        }
+
+        public void setLose()
+        {
+            currentState = gameState.loseScreen;
+            //mainWindow = new LoseScreen();
+        }
+
+        //Start the game loop
         public void TurnStart()
         {
             timeEngine.Start();
         }
 
+        
+
+        //this is the game loop that starts when the user clicks go
         private void OnTimerTick()
         {
             totalTime += 1;

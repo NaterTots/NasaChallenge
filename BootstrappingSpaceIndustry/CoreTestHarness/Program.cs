@@ -98,6 +98,7 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Cleanup();
 
             Console.ReadLine();
+
         }
     }
 }
