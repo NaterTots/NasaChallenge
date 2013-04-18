@@ -31,7 +31,6 @@ namespace LunarBaseCore
         /// <param name="tick">Amount of time that has passed.</param>
         public void Update(TickEventArgs tick)
         {
-            //TODO: calls into Rules Engine
             if (_constructionState == ConstructionState.Active)
             {
                 ServiceManager.Instance.GetService<RulesEngine>().UpdateBuilding(this, tick);
@@ -49,7 +48,6 @@ namespace LunarBaseCore
         /// <returns>True if the building is finished with construction.</returns>
         public bool UpdateConstruction(TickEventArgs tick)
         {
-            //TODO: calls into Rules Engine?  Or evaluate property directly?
             if (_constructionState == ConstructionState.InProgress)
             {
                 ServiceManager.Instance.GetService<RulesEngine>().UpdateBuildingConstruction(this, tick);
