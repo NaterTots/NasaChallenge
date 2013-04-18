@@ -58,7 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="ItemType\ResourceItemType.cs" />
-    <Compile Include="ResourceType.cs" />
     <Compile Include="Rules\BuildingDecayRule.cs" />
     <Compile Include="Rules\BuildingProductionRule.cs" />
     <Compile Include="Rules\RuleBase.cs" />
