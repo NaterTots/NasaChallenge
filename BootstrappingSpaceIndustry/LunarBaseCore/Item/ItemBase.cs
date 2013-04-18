@@ -11,5 +11,6 @@ namespace LunarBaseCore
     /// </summary>
     public class ItemBase
     {
+        protected ItemTypeBase _itemType;
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LunarBaseCore
 {
-    class BuildingManager : IService
+    public class BuildingManager : IService
     {
         List<BuildingItem> _activeBuildings = new List<BuildingItem>();
         List<BuildingItem> _inProgressBuildings = new List<BuildingItem>();

@@ -7,9 +7,22 @@ namespace LunarBaseCore
 {
     public class BuildingItem : ItemBase
     {
+        public enum ConstructionState
+        {
+            InProgress,
+            Active
+        };
+
+        ConstructionState _constructionState;
+        public ConstructionState State { get { return _constructionState; } }
+
         public BuildingItem(BuildingItemType itemtype)
         {
-            //TODO: what does this do?
+            _itemType = itemtype;
+
+            _constructionState = ConstructionState.InProgress;
+
+            //TODO: set initial values - is there anything else that needs to be set?
         }
 
         /// <summary>
@@ -19,6 +32,14 @@ namespace LunarBaseCore
         public void Update(TickEventArgs tick)
         {
             //TODO: calls into Rules Engine
+            if (_constructionState == ConstructionState.Active)
+            {
+
+            }
+            else
+            {
+                ServiceManager.Instance.GetService<LogManager>().Log("Trying to update building that is not in an Active state.");
+            }
         }
 
         /// <summary>
@@ -29,6 +50,14 @@ namespace LunarBaseCore
         public bool UpdateConstruction(TickEventArgs tick)
         {
             //TODO: calls into Rules Engine?  Or evaluate property directly?
+            if (_constructionState == ConstructionState.InProgress)
+            {
+
+            }
+            else
+            {
+                ServiceManager.Instance.GetService<LogManager>().Log("Trying to update construction of building that is not in an In Progress state.");
+            }
 
             return false;
         }

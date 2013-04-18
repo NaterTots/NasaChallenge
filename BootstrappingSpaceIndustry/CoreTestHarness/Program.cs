@@ -17,6 +17,7 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Add(new RandomGenerator());
 			ServiceManager.Instance.Add(new InventoryManager());
 			ServiceManager.Instance.Add(new ResourceLoader());
+            ServiceManager.Instance.Add(new BuildingManager());
 
             //ServiceManager - Initialization
 			ServiceManager.Instance.Initialize();
@@ -86,6 +87,11 @@ namespace CoreTestHarness
                 Console.WriteLine(randomGenerator.NextDouble(-1000, 1000).ToString());
             }
             Console.WriteLine();
+
+            //Testing building manager
+
+
+
 
             //Testing error handling
 			LogManager logger = ServiceManager.Instance.GetService<LogManager>();
