@@ -1,0 +1,87 @@
+﻿<Window x:Class="LunarBase.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="768" Width="1024">
+
+    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <!-- This grid contains the bar on the left of the screen-->
+        <Border DockPanel.Dock="Left" BorderThickness="0,0,3,0" BorderBrush="Black">
+        <Grid  Background="Beige" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+               DataContext="{StaticResource resourceVM}">
+            <!--use the ResourceViewModel as datacontext-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- This grid contains the top half of the bar; resources, robonauts, etc -->
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <Label Content="Resources" FontWeight="Bold" />
+                    <ListBox Grid.Row="1" ItemsSource="{Binding Resources}"
+                         >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="{Binding Name}" FontWeight="Bold"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding Quantity}" />
+                                        <Label Content="Kg" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+            </Grid>
+
+            <!-- This grid contains the bottom half of the bar; funds, date, Next Turn button -->
+            <Border Grid.Row="1" BorderThickness="0,3,0,0" BorderBrush="Black">
+                <Grid >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" >
+                        <Label Content="Budget:" FontWeight="Bold"/>
+                        <Label Content="{Binding Wallet}" />
+                        <!--Bind to funds-->
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Label Content="Date:" FontWeight="Bold"/>
+                        <Label Content="{Binding CurrentDate}" />
+                        <!--Bind to date-->
+                    </StackPanel>
+
+                    <Button Grid.Row="2" Content="Next Turn" Height="25" Width="80" />
+
+                </Grid>
+            </Border>
+        </Grid>
+        </Border>
+
+        <!--This grid contains the Schematics bar at the top of the screen-->
+        <Grid DockPanel.Dock="Top" Width="Auto" Height="130" Background="Yellow">
+
+            <Button Content="Schematics Window Goes Here" />
+        </Grid>
+        
+        <!--This grid contains the build queue, below the schematics bar-->
+        <Grid DockPanel.Dock="Top" Height="100" Background="Beige">
+            <Button Content="Build Queue Goes Here" />
+        </Grid>
+        
+        <!--The canvas contains the things that have been constructed. As this is the last item in the dockpanel, it fills.-->
+        <Canvas >
+            
+        </Canvas>
+        
+    </DockPanel>
+</Window>
