@@ -16,13 +16,14 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Add(new ConfigurationManager());
 			ServiceManager.Instance.Add(new RandomGenerator());
 			ServiceManager.Instance.Add(new InventoryManager());
-			ServiceManager.Instance.Add(new ResourceManager());
+			ServiceManager.Instance.Add(new ResourceLoader());
+            ServiceManager.Instance.Add(new BuildingManager());
 
             //ServiceManager - Initialization
 			ServiceManager.Instance.Initialize();
 
 			// Load resources from XML
-			ServiceManager.Instance.GetService<ResourceManager>().Load("xml/resources2.xml");
+            ServiceManager.Instance.GetService<ResourceLoader>().Load("xml/resources2.xml");
 
             //Add test data to configuration manager
 			ConfigurationManager configurationManager = ServiceManager.Instance.GetService<ConfigurationManager>();
@@ -87,12 +88,19 @@ namespace CoreTestHarness
             }
             Console.WriteLine();
 
+            //Testing building manager
+
+
+
+
             //Testing error handling
 			LogManager logger = ServiceManager.Instance.GetService<LogManager>();
 
             logger.Log(new ArgumentException("invalid argument exception"));
             logger.Log("This is a statement we need to log");
             logger.Log(new FormatException("invalid format exception"), "format invalid dummy");
+
+
 
             //Clean up
 			ServiceManager.Instance.Cleanup();

@@ -9,18 +9,11 @@ namespace LunarBaseCore
     /// <summary>
     /// Base class for all buildable ItemType objects.  Defines all standard methods of an Buildable ItemType.
     /// </summary>
-    public class BuildableItemTypeBase : ItemTypeBase, IEquatable<ItemTypeBase>//??? should this be abstract or an interface?
+    public class BuildableItemTypeBase : ItemTypeBase, IEquatable<ItemTypeBase>
     {
-
-		// All item type properties are stored in a dictionary;
-		// This allows use to quickly add itemtype properties merely by modifying the XML,
-		// rather than having to add a "C# property" to the class.
-        private IDictionary<string, string> _itemTypeProps = new Dictionary<string, string>();
-
         public BuildableItemTypeBase() : base()
 		{
-            Consumables = new List<ItemTypeBase>();
-            Consumables = new List<ItemTypeBase>();
+            //TODO: how do we load the RequiredMaterials and RequiredDependencies properties?
 		}
 
         #region Public Enums
@@ -42,10 +35,14 @@ namespace LunarBaseCore
 			}
 		}
 
-        public IList<ItemTypeBase> Consumables { get; set; }
-        public IList<ItemTypeBase> Requirements { get; set; }
-        public IList<ItemTypeBase> Output { get; set; }
-        public IList<ItemTypeBase> PartsRequired { get; set; }
+        private List<KeyValuePair<ItemTypeBase, long>> _requiredMaterials = new List<KeyValuePair<ItemTypeBase, long>>();
+        public List<KeyValuePair<ItemTypeBase, long>> RequiredMaterials { get { return _requiredMaterials; } }
+
+        private List<KeyValuePair<ItemTypeBase, long>> _requiredDependencies = new List<KeyValuePair<ItemTypeBase, long>>();
+        public List<KeyValuePair<ItemTypeBase, long>> RequiredDependencies { get { return _requiredDependencies; } }
+
+        //TODO: initial properties are needed for 'required robots to build'
+
         #endregion
     }
 }
