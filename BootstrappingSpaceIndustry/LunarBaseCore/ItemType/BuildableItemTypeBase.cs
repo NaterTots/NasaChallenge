@@ -36,10 +36,10 @@ namespace LunarBaseCore
 		}
 
         private List<KeyValuePair<ItemTypeBase, long>> _requiredMaterials = new List<KeyValuePair<ItemTypeBase, long>>();
-        public List<KeyValuePair<ItemTypeBase, long>> RequiredMaterials { readonly get { return _requiredMaterials; } }
+        public List<KeyValuePair<ItemTypeBase, long>> RequiredMaterials { get { return _requiredMaterials; } }
 
         private List<KeyValuePair<ItemTypeBase, long>> _requiredDependencies = new List<KeyValuePair<ItemTypeBase, long>>();
-        public List<KeyValuePair<ItemTypeBase, long>> RequiredDependencies { readonly get { return _requiredDependencies; } }
+        public List<KeyValuePair<ItemTypeBase, long>> RequiredDependencies { get { return _requiredDependencies; } }
 
         //TODO: initial properties are needed for 'required robots to build'
 

@@ -66,12 +66,6 @@ namespace LunarBaseCore
             //mainWindow = new PlayScreen();
         }
 
-        public void setLose()
-        {
-            currentState = gameState.loseScreen;
-            //mainWindow = new LoseScreen();
-        }
-
         //Start the game loop
         public void TurnStart()
         {
