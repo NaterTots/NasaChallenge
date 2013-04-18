@@ -34,7 +34,7 @@ namespace LunarBaseCore
             //TODO: calls into Rules Engine
             if (_constructionState == ConstructionState.Active)
             {
-
+                ServiceManager.Instance.GetService<RulesEngine>().UpdateBuilding(this, tick);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace LunarBaseCore
             //TODO: calls into Rules Engine?  Or evaluate property directly?
             if (_constructionState == ConstructionState.InProgress)
             {
-
+                ServiceManager.Instance.GetService<RulesEngine>().UpdateBuildingConstruction(this, tick);
             }
             else
             {
