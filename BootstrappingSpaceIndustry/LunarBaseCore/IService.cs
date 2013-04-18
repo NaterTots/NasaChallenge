@@ -18,6 +18,7 @@ namespace LunarBaseCore
         InventoryManager,
         ConfigurationManager,
 		ResourceManager,
+        BuildingManager,
         RandomGenerator,
         Logger
         //Game,

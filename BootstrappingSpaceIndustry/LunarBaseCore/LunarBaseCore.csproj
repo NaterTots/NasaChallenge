@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingManager.cs" />
     <Compile Include="ConfigurationManager.cs" />
     <Compile Include="EntityLoading\EntityManagerBase.cs" />
     <Compile Include="EntityLoading\LoadableEntity.cs" />
