@@ -1,66 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<resources>
-  <rawMaterials>
-    <rawMaterial name="Metal">
-      <source>Earth,Mining</source>
-      <description>Used for building metal-based objects.</description>
-      <weight>High</weight>
-      <price>100</price>
-    </rawMaterial>
-    <rawMaterial name="Plastic">
-      <source>Earth</source>
-      <description>Used for building plastic-based objects.</description>
-      <weight>Medium</weight>
-      <price>20</price>
-    </rawMaterial>
-    <rawMaterial name="Textile">
-      <source>Earth</source>
-      <description>Used for building composite materials and clothing.</description>
-      <weight>High</weight>
-      <price>10</price>
-    </rawMaterial>
-    <rawMaterial name="Food">
-      <source>Earth,Moon</source>
-      <description>Used for feeding humans.</description>
-      <weight>High</weight>
-      <price>10</price>
-    </rawMaterial>
-    <rawMaterial name="Power">
-      <source>Moon</source>
-      <description>Used for powering buildings and operations.</description>
-      <weight>High</weight>
-    </rawMaterial>
-    <rawMaterial name="Helium-3">
-      <source>Moon</source>
-      <description>Used for creating rocketfuel and selling for money.</description>
-      <weight>High</weight>
-      <price>200</price>
-    </rawMaterial>
-    <rawMaterial name="Money">
-      <description>Used for buying materials from earth.</description>
-      <weight>High</weight>
-      <price>1</price>
-    </rawMaterial>
-    <rawMaterial name="Moon Rock">
-      <source>Moon</source>
-      <description>Used for building some types of buildings.</description>
-      <weight>High</weight>
-      <price>20</price>
-    </rawMaterial>
-    <rawMaterial name="Chemicals">
-      <source>Earth</source>
-      <description>Used for building modules that require chemicals.</description>
-      <weight>Medium</weight>
-      <price>50</price>
-    </rawMaterial>
-    <rawMaterial name="Water">
-      <source>Earth,Moon</source>
-      <description>Used for watering plants, human consuption, and creating modules.</description>
-      <weight>High</weight>
-      <price>5</price>
-    </rawMaterial>
-  </rawMaterials>
+<itemTypes>
+  <resources>
+    <resource
+      name="Metal"
+      sources="Earth,Moon"
+      description="Used for building metal-based objects."
+      weight="High"
+      price="100"/>
+    <resource
+      name="Plastic"
+      sources="Earth"
+      description="Used for building plastic-based objects."
+      weight="Medium"
+      price="20"/>
+    <resource
+      name="Textile"
+      sources="Earth,Moon"
+      description="Used for creating composite materials and clothing."
+      weight="Low"
+      price="5"/>
+    <resource
+      name="Food"
+      sources="Earth,Moon"
+      description="Used for feeding humans."
+      weight="Low"
+      price="5"/>
+    <resource
+      name="Power"
+      sources="Earth,Moon"
+      description="Used for powering buildings and refining materials."
+      weight="High"
+      price="20"/>
+    <resource
+      name="Helium-3"
+      sources="Moon"
+      description="Used for creating rocket fuel."
+      weight="Low"
+      price="200"/>
+    <resource
+      name="Money"
+      sources=""
+      description="Used for buying materials to build items."
+      weight="Low"
+      price="1"/>
+    <resource
+      name="Moon Rock"
+      sources="Moon"
+      description="Used for building certain buildings."
+      weight="High"
+      price="50"/>
+    <resource
+      name="Water"
+      sources="Earth,Moon"
+      description="Used for creating modules and for human consumption."
+      weight="High"
+      price="5"/>
+    <resource
+      name="Chemicals"
+      sources="Earth"
+      description="Used for creating modules."
+      weight="Medium"
+      price="20"/>
+  </resources>
+  <modules>
+    <module
+      name="Solar Panel"
+      sources="Earth,Moon"
+      description="Solar panels are used to generate electricty from the sun."
+      weight="Medium"
+      price="50">
+      <fabricationProperties success="Medium">
+        <parts>
+          <part type="resource" name="Metal" Quantity="3" />
+        </parts>
+        <requirements>
+          <requirement type="building" name="Fabricator" /> 
+        </requirements>
+      </fabricationProperties>
+    </module>
+      
+  </modules>
+</itemTypes>
+
+<!--
   <modules>
     <module name="Solar Panel">
       <source>Earth,Moon</source>
@@ -124,3 +147,4 @@
     </product>
   </products>
 </resources>
+-->

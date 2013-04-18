@@ -11,38 +11,85 @@ namespace LunarBaseCore
     /// </summary>
     public class ItemTypeBase : IEquatable<ItemTypeBase>//??? should this be abstract or an interface?
     {
+
 		// All item type properties are stored in a dictionary;
 		// This allows use to quickly add itemtype properties merely by modifying the XML,
 		// rather than having to add a "C# property" to the class.
-		private StringDictionary _itemTypeProps = new StringDictionary();
+        private IDictionary<string, string> _itemTypeProps = new Dictionary<string, string>();
 
 		public ItemTypeBase()
 		{
 			ID = Guid.NewGuid();
 		}
 
-		/// <summary>
+        #region Public Enums
+        public enum ItemWeight
+        {
+            High,
+            Medium,
+            Low
+        }
+        public enum ItemSource
+        {
+            Earth,
+            Moon
+        }
+        #endregion
+
+        #region Public Properties
+        /// <summary>
 		/// This is the name of the object as specified in the XML; this could be referenced by other objects in the XML, and should not contain spaces.
 		/// </summary>
 		public string Name
 		{
 			get
 			{
-				return GetProperty("Name");
-			}
-			set
-			{
-				SetProperty("Name", value);
+				return GetProperty("name");
 			}
 		}
+
+        public ItemSource[] Sources
+        {
+            get
+            {
+                return (GetProperty("sources")).Split(',').Select(x => (ItemSource)Enum.Parse(typeof(ItemSource), x)).ToArray();
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return GetProperty("description");
+            }
+        }
+
+        public ItemWeight Weight
+        {
+            get
+            {
+                return (ItemWeight)Enum.Parse(typeof(ItemWeight), GetProperty("weight"));
+            }
+        }
+
+        public int Price
+        {
+            get
+            {
+                return int.Parse(GetProperty("price"));
+            }
+        }
+
+        public int Quantity { get; set; } //Used when treating this class as a consumable
 
 		public Guid ID
 		{
 			get;
 			private set;
 		}
+        #endregion
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value associated with the given property.
 		/// </summary>
 		/// <param name="propName"></param>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LunarBaseCore
 {
-    public class BuildingItemType : ItemTypeBase
+    public class BuildingItemType : BuildableItemTypeBase
     {
 		public BuildingItemType()
 		{

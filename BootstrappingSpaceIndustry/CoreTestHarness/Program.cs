@@ -22,7 +22,7 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Initialize();
 
 			// Load resources from XML
-			ServiceManager.Instance.GetService<ResourceManager>().Load("xml/resources.xml");
+			ServiceManager.Instance.GetService<ResourceManager>().Load("xml/resources2.xml");
 
             //Add test data to configuration manager
 			ConfigurationManager configurationManager = ServiceManager.Instance.GetService<ConfigurationManager>();
