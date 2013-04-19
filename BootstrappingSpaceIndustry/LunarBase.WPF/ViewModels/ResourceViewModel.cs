@@ -12,25 +12,8 @@ namespace LunarBase.WPF.ViewModels
 {
 	internal class ResourceViewModel : ViewModelBase
 	{
-		public ResourceViewModel()
-		{
-			Wallet = 123400000;
-			CurrentDate = DateTime.Parse("02/25/2099");
-
-			ResourceItemType res1 = new ResourceItemType();
-			res1.SetProperty("name", "Titanium");
-			//res1.Quantity = 214;
-
-			ResourceItemType res2 = new ResourceItemType();
-			res2.SetProperty("name", "Wool");
-			//res2.Quantity = 607;
-
-			_resources.Add(res1);
-			_resources.Add(res2);
-		}
-
-		private ObservableCollection<ResourceItemType> _resources = new ObservableCollection<ResourceItemType>();
-		public ObservableCollection<ResourceItemType> Resources
+		private ObservableCollection<ResourceItemInstance> _resources = new ObservableCollection<ResourceItemInstance>();
+		public ObservableCollection<ResourceItemInstance> Resources
 		{
 			get
 			{
@@ -58,14 +41,53 @@ namespace LunarBase.WPF.ViewModels
 		public DateTime CurrentDate
 		{
 			get { return _currentDate; }
-			set 
-			{ 
+			set
+			{
 				_currentDate = value;
 				OnPropertyChanged("CurrentDate");
 			}
 		}
 
-		//public ICommand NextTurnClick
+		public ResourceViewModel()
+		{
+			// Test data
+			Wallet = 123400000;
+			CurrentDate = DateTime.Parse("02/25/2099");
 
+			
+			//TODO subscribe to the event so we can see the inventory change
+			updateResourcesFromInventory();
+		}
+
+		private void updateResourcesFromInventory()
+		{
+			_resources.Clear();
+			foreach (KeyValuePair<ItemTypeBase, long> item in ServiceManager.Instance.GetService<InventoryManager>().GetInventory())
+			{
+				_resources.Add(new ResourceItemInstance(item.Key, item.Value));
+			}
+		}
+
+	}
+
+	internal class ResourceItemInstance
+	{
+		public ItemTypeBase ItemType
+		{
+			get;
+			set;
+		}
+
+		public long Count
+		{
+			get;
+			set;
+		}
+
+		public ResourceItemInstance(ItemTypeBase itemType, long count)
+		{
+			ItemType = itemType;
+			Count = count;
+		}
 	}
 }

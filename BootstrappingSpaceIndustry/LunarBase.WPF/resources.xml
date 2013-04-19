@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<itemTypes>
+  <resources>
+    <resource
+      name="Metal"
+      sources="Earth,Moon"
+      description="Used for building metal-based objects."
+      weight="High"
+      price="100"/>
+    <resource
+      name="Plastic"
+      sources="Earth"
+      description="Used for building plastic-based objects."
+      weight="Medium"
+      price="20"/>
+    <resource
+      name="Textile"
+      sources="Earth,Moon"
+      description="Used for creating composite materials and clothing."
+      weight="Low"
+      price="5"/>
+    <resource
+      name="Food"
+      sources="Earth,Moon"
+      description="Used for feeding humans."
+      weight="Low"
+      price="5"/>
+    <resource
+      name="Power"
+      sources="Earth,Moon"
+      description="Used for powering buildings and refining materials."
+      weight="High"
+      price="20"/>
+    <resource
+      name="Helium-3"
+      sources="Moon"
+      description="Used for creating rocket fuel."
+      weight="Low"
+      price="200"/>
+    <resource
+      name="Money"
+      sources=""
+      description="Used for buying materials to build items."
+      weight="Low"
+      price="1"/>
+    <resource
+      name="Moon Rock"
+      sources="Moon"
+      description="Used for building certain buildings."
+      weight="High"
+      price="50"/>
+    <resource
+      name="Water"
+      sources="Earth,Moon"
+      description="Used for creating modules and for human consumption."
+      weight="High"
+      price="5"/>
+    <resource
+      name="Chemicals"
+      sources="Earth"
+      description="Used for creating modules."
+      weight="Medium"
+      price="20"/>
+  </resources>
+  <modules>
+    <module
+      name="Solar Panel"
+      sources="Earth,Moon"
+      description="Solar panels are used to generate electricty from the sun."
+      weight="Medium"
+      price="50">
+      <fabricationProperties success="Medium">
+        <materials>
+          <material type="resource" name="Metal" quantity="3" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" /> 
+        </dependencies>
+      </fabricationProperties>
+    </module>
+  </modules>
+  <buildings>
+    <building
+      name="Research Lab"
+      sources="Moon"
+      description="Used to perform experiments in space to make money."
+      weight="High"
+      price="0">
+      <fabricationProperties success="Always">
+        <materials>
+          <material type="module" name="Shelter Parts" quantity="10" />
+          <material type="module" name="Electronics" quantity="5" />
+          <material type="resource" name="Moon Rocks" quantity="10" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+      <buildingProperties buildTime="5">
+        <consumables>
+          <consumable type="resource" name="Power" quantity="10" />
+          <consumable type="resource" name="Chemicals" quantity="2" />
+        </consumables>
+        <outputs>
+          <output type="resource" name="Money" quantity="500" />
+        </outputs>
+      </buildingProperties>
+    </building>
+  </buildings>
+</itemTypes>
+
+<!--
+  <modules>
+    <module name="Solar Panel">
+      <source>Earth,Moon</source>
+      <description>Solar panels are used to generate electricty from the sun.</description>
+      <weight>medium</weight>
+      <price>50</price>
+      <fabricationSuccess>Medium</fabricationSuccess>
+      <fabrication>
+        <rawMaterial name="Metal" Quantity="3" />
+        <rawMaterial name="Chemicals" Quantity="1" />
+        <rawMaterial name="Plastic" Quantity="1" />
+        <rawMaterial name="Power" Quantity="2" />
+      </fabrication>
+      <requirements>
+        <product name="Fabricator" />
+      </requirements>
+    </module>
+  </modules>
+  <products>
+    <product name="Control Center">
+      <source>Earth</source>
+      <description>The control center the is central hub of the moon base.</description>
+      <weight>high</weight>
+      <price>1000</price>
+      <consumables>
+        <rawMaterial name="Power" Quantity="3" />
+      </consumables>
+    </product>
+    <product name="Power Station (Solar)">
+      <source>Moon</source>
+      <description>The solar power station uses solar panels to create power.</description>
+      <fabrication>
+        <module name="Solar Panel" Quantity="4" />
+        <module name="Shelter Parts" Quantity="4" />
+        <module name="Electronic Parts" Quantity="2" />
+      </fabrication>
+      <requirements>
+        <product name="Construction Pod" />
+        <product name="Robonaut" Quantity="3" />
+      </requirements>
+      <output>
+        <rawMaterial name="Power" Quantity="10" />
+      </output>
+    </product>
+    <product name="Green House">
+      <source>Moon</source>
+      <description>The green house creates food and oxygen for humans.</description>
+      <fabrication>
+        <module name="Shelter Parts" Quantity="4" />
+      </fabrication>
+      <requirements>
+        <product name="Construction Pod" />
+        <product name="Robonaut" Quantity="3" />
+      </requirements>
+      <consumables>
+        <rawMaterial name="Water" Quantity="1" />
+      </consumables>
+      <output>
+        <rawMaterial name="Food" Quantity="10" />
+      </output>
+    </product>
+  </products>
+</resources>
+-->
