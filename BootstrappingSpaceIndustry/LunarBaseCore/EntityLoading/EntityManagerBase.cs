@@ -95,7 +95,8 @@ namespace LunarBaseCore
 
         public List<T> FindAll()
         {
-            return _allEntities.FindAll((entity) => entity.GetType() == typeof(T)) as List<T>;
+            //this logic is unnecessary: return _allEntities.FindAll((entity) => entity.GetType() == typeof(T)) as List<T>;
+            return _allEntities as List<T>;
         }
 
 	}
