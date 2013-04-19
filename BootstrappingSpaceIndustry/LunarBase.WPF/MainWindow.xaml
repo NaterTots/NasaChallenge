@@ -7,67 +7,22 @@
     <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <!-- This grid contains the bar on the left of the screen-->
         <Border DockPanel.Dock="Left" BorderThickness="0,0,3,0" BorderBrush="Black">
-        <Grid  Background="Beige" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-               DataContext="{StaticResource resourceVM}">
-            <!--use the ResourceViewModel as datacontext-->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="4*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <!-- This grid contains the top half of the bar; resources, robonauts, etc -->
-            <Grid Grid.Row="0">
+            <Grid  Background="Beige" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                   >
+                <!--use the ResourceViewModel as datacontext-->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="4*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                
-                <Label Content="Resources" FontWeight="Bold" />
-                    <ListBox Grid.Row="1" ItemsSource="{Binding Resources}"
-                         >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <Label Content="{Binding ItemType.Name}" FontWeight="Bold"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="#" />
-                                        <Label Content="{Binding Count}" />
-                                      
-                                    </StackPanel>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+
+                <!-- This grid contains the top half of the bar; resources, robonauts, etc -->
+                <controls:Resources DataContext="{StaticResource resourceVM}" />
+
+                <!-- This grid contains the bottom half of the bar; funds, date, Next Turn button -->
+                <controls:InfoPanel Grid.Row="1"/>
             </Grid>
-
-            <!-- This grid contains the bottom half of the bar; funds, date, Next Turn button -->
-            <Border Grid.Row="1" BorderThickness="0,3,0,0" BorderBrush="Black">
-                <Grid >
-                    <Grid.RowDefinitions >
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-
-                    </Grid.RowDefinitions>
-
-                    <!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" >
-                        <Label Content="Budget:" FontWeight="Bold"/>
-                        <Label Content="{Binding Wallet}" />
-                       
-                    </StackPanel>-->
-
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
-                            <Label Content="Date:" FontWeight="Bold"/>
-                        <Label Content="{Binding CurrentDate}" />
-                        <!--Bind to date-->
-                    </StackPanel>
-
-                    <Button Grid.Row="2" Content="Next Turn" Height="25" Width="80" />
-
-                </Grid>
-            </Border>
-        </Grid>
         </Border>
+        
         
         <!--This UserControl contains all the schematics display code; see Controls\Schematics.xaml-->
         <controls:Schematics DockPanel.Dock="Top" DataContext="{StaticResource schematicsVM}" Height="150"/>
