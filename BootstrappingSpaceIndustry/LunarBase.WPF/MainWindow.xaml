@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LunarBase.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="768" Width="1024">
+        Title="Lunar Base" Height="768" Width="1024">
 
     <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <!-- This grid contains the bar on the left of the screen-->
