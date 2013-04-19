@@ -1,6 +1,7 @@
 ﻿<Window x:Class="LunarBase.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:LunarBase.WPF.Controls"
         Title="Lunar Base" Height="768" Width="1024">
 
     <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -67,17 +68,13 @@
             </Border>
         </Grid>
         </Border>
-
-        <!--This grid contains the Schematics bar at the top of the screen-->
-        <Grid DockPanel.Dock="Top" Width="Auto" Height="130" Background="Yellow">
-
-            <Button Content="Schematics Window Goes Here" />
-        </Grid>
         
-        <!--This grid contains the build queue, below the schematics bar-->
-        <Grid DockPanel.Dock="Top" Height="100" Background="Beige">
-            <Button Content="Build Queue Goes Here" />
-        </Grid>
+        <!--This UserControl contains all the schematics display code; see Controls\Schematics.xaml-->
+        <controls:Schematics DockPanel.Dock="Top" DataContext="{StaticResource schematicsVM}" Height="150"/>
+
+        <!--This UserControl contains all the build queue display code; see Controls\BuildQueue.xaml-->
+        <controls:BuildQueue DockPanel.Dock="Top" DataContext="{StaticResource buildQueueVM}" Height="150" />
+            
         
         <!--The canvas contains the things that have been constructed. As this is the last item in the dockpanel, it fills.-->
         <Canvas >

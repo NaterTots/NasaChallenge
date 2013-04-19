@@ -5,5 +5,7 @@
              xmlns:vm="clr-namespace:LunarBase.WPF.ViewModels">
     <Application.Resources>
         <vm:ResourceViewModel x:Key="resourceVM" />
+        <vm:SchematicsViewModel x:Key="schematicsVM" />
+        <vm:BuildQueueViewModel x:Key="buildQueueVM" />
     </Application.Resources>
 </Application>

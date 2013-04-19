@@ -54,8 +54,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\BuildQueue.xaml.cs">
+      <DependentUpon>BuildQueue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Schematics.xaml.cs">
+      <DependentUpon>Schematics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BuildQueueViewModel.cs" />
     <Compile Include="ViewModels\ResourceViewModel.cs" />
+    <Compile Include="ViewModels\SchematicsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Page Include="Controls\BuildQueue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Schematics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
