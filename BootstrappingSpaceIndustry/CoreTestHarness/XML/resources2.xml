@@ -71,16 +71,43 @@
       weight="Medium"
       price="50">
       <fabricationProperties success="Medium">
-        <parts>
-          <part type="resource" name="Metal" Quantity="3" />
-        </parts>
-        <requirements>
-          <requirement type="building" name="Fabricator" /> 
-        </requirements>
+        <materials>
+          <material type="resource" name="Metal" quantity="3" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" /> 
+        </dependencies>
       </fabricationProperties>
     </module>
-      
   </modules>
+  <buildings>
+    <building
+      name="Research Lab"
+      sources="Moon"
+      description="Used to perform experiments in space to make money."
+      weight="High"
+      price="0">
+      <fabricationProperties success="Always">
+        <materials>
+          <material type="module" name="Shelter Parts" quantity="10" />
+          <material type="module" name="Electronics" quantity="5" />
+          <material type="resource" name="Moon Rocks" quantity="10" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+      <buildingProperties buildTime="5">
+        <consumables>
+          <consumable type="resource" name="Power" quantity="10" />
+          <consumable type="resource" name="Chemicals" quantity="2" />
+        </consumables>
+        <outputs>
+          <output type="resource" name="Money" quantity="500" />
+        </outputs>
+      </buildingProperties>
+    </building>
+  </buildings>
 </itemTypes>
 
 <!--

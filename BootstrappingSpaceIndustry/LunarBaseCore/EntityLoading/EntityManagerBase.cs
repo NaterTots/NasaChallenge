@@ -31,10 +31,10 @@ namespace LunarBaseCore
 		/// If that attribute doesn't exist, it will return null! Make sure you check for null before trying to access XAttribute.Value.</remarks>
 		/// <param name="node"></param>
 		/// <param name="entity"></param>
-		protected virtual void LoadEntityFromNode(XElement node, T entity)
-		{
+        protected virtual void LoadEntityFromNode(XElement node, T entity)
+        {
+        }
 
-		} 
 		#endregion
 
 		public EntityManagerBase()

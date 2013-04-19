@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace LunarBaseCore
 {
-	public class ModuleLoader : EntityManagerBase<ResourceItemType>, IService
+	public class ModuleLoader : EntityManagerBase<ModuleItemType>, IService
 	{
 
 		protected override string NodeName
@@ -17,11 +17,10 @@ namespace LunarBaseCore
 			}
 		}
 
-		protected override void LoadEntityFromNode(XElement node, ResourceItemType entity)
-		{
-			// The base already loads all the properties - do we need to load anything else?
-
-		}
+        protected override void LoadEntityFromNode(XElement node, ModuleItemType entity)
+        {
+            entity.ParseFabricationProperties(node.Element("fabricationProperties"));
+        }
 
 		#region IService Members
 
@@ -39,5 +38,7 @@ namespace LunarBaseCore
 		}
 
 		#endregion
-	}
+
+
+    }
 }

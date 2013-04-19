@@ -22,6 +22,13 @@ namespace LunarBaseCore
 			ID = Guid.NewGuid();
 		}
 
+        public ItemTypeBase(Dictionary<string, string> Properties)
+        {
+            ID = Guid.NewGuid();
+            this._itemTypeProps = Properties;
+        }
+
+
         #region Public Enums
         public enum ItemWeight
         {
@@ -79,8 +86,6 @@ namespace LunarBaseCore
                 return int.Parse(GetProperty("price"));
             }
         }
-
-        public int Quantity { get; set; } //Used when treating this class as a consumable
 
 		public Guid ID
 		{
