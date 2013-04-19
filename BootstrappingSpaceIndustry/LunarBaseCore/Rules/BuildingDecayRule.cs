@@ -5,10 +5,10 @@ using System.Text;
 
 namespace LunarBaseCore.Rules
 {
-    /// <summary>
-    /// This rule defines the decay algorithm for items of type BuildingItemType.
-    /// </summary>
-    public class BuildingDecayRule : RuleBase
-    {
-    }
+	/// <summary>
+	/// This rule defines the decay algorithm for items of type BuildingItemType.
+	/// </summary>
+	static public class BuildingDecayRule
+	{
+	}
 }

@@ -67,9 +67,9 @@
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="ItemType\ResourceItemType.cs" />
     <Compile Include="RulesEngine.cs" />
+    <Compile Include="Rules\BuildingCreationRule.cs" />
     <Compile Include="Rules\BuildingDecayRule.cs" />
     <Compile Include="Rules\BuildingProductionRule.cs" />
-    <Compile Include="Rules\RuleBase.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="BuildQueue.cs" />
   </ItemGroup>
