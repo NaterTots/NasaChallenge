@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityLoading\UserLoader.cs" />
+    <Compile Include="ItemType\UserItemType.cs" />
     <Compile Include="Manager\ConfigurationManager.cs" />
     <Compile Include="EntityLoading\BuildingLoader.cs" />
     <Compile Include="EntityLoading\EntityManagerBase.cs" />

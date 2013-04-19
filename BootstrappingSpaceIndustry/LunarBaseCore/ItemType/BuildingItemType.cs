@@ -10,16 +10,6 @@ namespace LunarBaseCore
     {
         #region Public Properties
         /// <summary>
-        /// The time it takes for the building to be built.
-        /// </summary>
-        public long BuildTime
-        {
-            get
-            {
-                return long.Parse(GetProperty("buildtime"));
-            }
-        }
-        /// <summary>
         /// The rate at which the building decays
         /// </summary>
         public double DecayRate
@@ -47,9 +37,8 @@ namespace LunarBaseCore
         /// <param name="element"></param>
         public void ParseBuildingProperties(XElement element)
         {
-            SetProperty("buildtime", element.Attribute("buildtime").Value);
             SetProperty("decayrate", element.Attribute("decayrate").Value);
-
+            
             // Consumables are items that are consumed every time period to keep the building running and producing output.
             foreach (XElement part in element.Descendants("consumable"))
             {

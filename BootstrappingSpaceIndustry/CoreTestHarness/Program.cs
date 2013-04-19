@@ -19,7 +19,9 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Add(new ResourceLoader());
             ServiceManager.Instance.Add(new ModuleLoader());
             ServiceManager.Instance.Add(new BuildingLoader());
+            ServiceManager.Instance.Add(new UserLoader());
             ServiceManager.Instance.Add(new BuildingManager());
+
 
             //ServiceManager - Initialization
 			ServiceManager.Instance.Initialize();
@@ -28,6 +30,7 @@ namespace CoreTestHarness
             ServiceManager.Instance.GetService<ResourceLoader>().Load("xml/resources2.xml");
             ServiceManager.Instance.GetService<ModuleLoader>().Load("xml/resources2.xml");
             ServiceManager.Instance.GetService<BuildingLoader>().Load("xml/resources2.xml");
+            ServiceManager.Instance.GetService<UserLoader>().Load("xml/resources2.xml");
 
             //Add test data to configuration manager
 			ConfigurationManager configurationManager = ServiceManager.Instance.GetService<ConfigurationManager>();

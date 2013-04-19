@@ -24,6 +24,17 @@ namespace LunarBaseCore
             }
         }
 
+        /// <summary>
+        /// The time it takes for the building to be built.
+        /// </summary>
+        public long BuildTime
+        {
+            get
+            {
+                return long.Parse(GetProperty("buildtime"));
+            }
+        }
+
         private IDictionary<ItemTypeBase, long> _requiredMaterials = new Dictionary<ItemTypeBase, long>();
         public IDictionary<ItemTypeBase, long> RequiredMaterials { get { return _requiredMaterials; } }
 
@@ -55,7 +66,8 @@ namespace LunarBaseCore
         public void ParseFabricationProperties(XElement element)
         {
             SetProperty("success", element.Attribute("success").Value);
-
+            SetProperty("buildtime", element.Attribute("buildtime").Value);
+            
             // Materials are items that are used to build an item
             foreach (XElement part in element.Descendants("material"))
             {

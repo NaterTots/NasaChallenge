@@ -19,11 +19,11 @@ namespace LunarBase.WPF.ViewModels
 
 			ResourceItemType res1 = new ResourceItemType();
 			res1.SetProperty("name", "Titanium");
-			res1.Quantity = 214;
+			//res1.Quantity = 214;
 
 			ResourceItemType res2 = new ResourceItemType();
 			res2.SetProperty("name", "Wool");
-			res2.Quantity = 607;
+			//res2.Quantity = 607;
 
 			_resources.Add(res1);
 			_resources.Add(res2);
