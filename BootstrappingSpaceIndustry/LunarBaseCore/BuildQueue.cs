@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LunarBaseCore
 {
-    public class BuildQueue
+    public class BuildQueue : IService
     {
         Queue<WorkItem> _queue = new Queue<WorkItem>();
 
@@ -30,6 +30,21 @@ namespace LunarBaseCore
             {
                 yield return item;
             }
+        }
+
+        public void Initialize()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void Cleanup()
+        {
+            //throw new NotImplementedException();
+        }
+
+        public ServiceType GetServiceType()
+        {
+            return ServiceType.BuildQueue;
         }
     }
 

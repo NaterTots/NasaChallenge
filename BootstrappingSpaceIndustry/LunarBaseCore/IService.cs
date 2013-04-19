@@ -21,6 +21,7 @@ namespace LunarBaseCore
         BuildingManager,
         RandomGenerator,
         RulesEngine,
+        BuildQueue,
         Logger
         //Game,
         //TextureManager
