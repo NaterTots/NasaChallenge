@@ -9,14 +9,28 @@ namespace LunarBaseCore
     {
         Queue<WorkItem> _queue = new Queue<WorkItem>();
 
+        // Fired when the queue changes
+        public event EventHandler<BuildQueueChangeEventArgs> BuildQueueChange;
+
         public void AddWorkItem(WorkItem item)
         {
             _queue.Enqueue(item);
+
+            if (BuildQueueChange != null)
+            {
+                BuildQueueChange(this, null);
+            }
         }
 
         public WorkItem GetNextWorkItem()
         {
-            return _queue.Dequeue();
+            WorkItem retVal = _queue.Dequeue();
+
+            if (BuildQueueChange != null)
+            {
+                BuildQueueChange(this, null);
+            }
+            return retVal;
         }
 
         public WorkItem PeekAtNextWorkItem()
@@ -45,6 +59,11 @@ namespace LunarBaseCore
         public ServiceType GetServiceType()
         {
             return ServiceType.BuildQueue;
+        }
+
+        public class BuildQueueChangeEventArgs : EventArgs
+        {
+
         }
     }
 

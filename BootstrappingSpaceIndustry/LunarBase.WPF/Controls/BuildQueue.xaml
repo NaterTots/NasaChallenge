@@ -14,11 +14,11 @@
 
             <Label Content="Build Queue"/>
 
-            <ListBox Grid.Row="1" >
-                <ListBoxItem Content="Currently building" />
-                <ListBoxItem Content="Will build next" />
-                <ListBoxItem Content="Will build next next" />
-            </ListBox>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Label Content="Currently building" />
+                <Label Content="Will build next" />
+                <Label Content="Will build next next" />
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

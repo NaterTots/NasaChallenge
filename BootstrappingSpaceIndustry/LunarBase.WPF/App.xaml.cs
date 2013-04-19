@@ -21,6 +21,7 @@ namespace LunarBase.WPF
 			ServiceManager.Instance.Add(new ModuleLoader());
 			ServiceManager.Instance.Add(new BuildingLoader());
 			ServiceManager.Instance.Add(new BuildingManager());
+            ServiceManager.Instance.Add(new BuildQueue());
 
 			//ServiceManager - Initialization
 			ServiceManager.Instance.Initialize();
