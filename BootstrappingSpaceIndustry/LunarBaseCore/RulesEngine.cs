@@ -22,12 +22,12 @@ namespace LunarBaseCore
             return ServiceType.RulesEngine;
         }
 
-        public void UpdateBuilding(BuildingItem item, TickEventArgs ticks)
+        public void UpdateBuilding(BuildingItem item, long timeElapsed)
         {
             //TODO:this
         }
 
-        public bool UpdateBuildingConstruction(BuildingItem item, TickEventArgs tick)
+        public bool UpdateBuildingConstruction(BuildingItem item, long timeElapsed)
         {
             //TODO:this
                 //return value is true if the building construction has completed

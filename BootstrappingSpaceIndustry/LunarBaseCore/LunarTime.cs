@@ -23,7 +23,6 @@ namespace LunarBaseCore
 		{
 			_timer = new Timer(timerCallback, null, Timeout.Infinite, MillisecondsBetweenTicks);
             GameEngine bleh = new GameEngine();
-            TimeTick += new EventHandler<TickEventArgs>(bleh.OnTimerTick);
 		}
 
 		private void timerCallback(object state)

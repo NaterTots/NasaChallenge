@@ -29,7 +29,7 @@ namespace LunarBaseCore
         /// This method is called when a turn ends.  It requests that a building updates itself (rules, decay, etc).
         /// </summary>
         /// <param name="tick">Amount of time that has passed.</param>
-        public void Update(TickEventArgs tick)
+        public void Update(long tick)
         {
             if (_constructionState == ConstructionState.Active)
             {
@@ -46,11 +46,11 @@ namespace LunarBaseCore
         /// </summary>
         /// <param name="tick">Amount of time that has passed.</param>
         /// <returns>True if the building is finished with construction.</returns>
-        public bool UpdateConstruction(TickEventArgs tick)
+        public bool UpdateConstruction(long timeElapsed)
         {
             if (_constructionState == ConstructionState.InProgress)
             {
-                ServiceManager.Instance.GetService<RulesEngine>().UpdateBuildingConstruction(this, tick);
+                ServiceManager.Instance.GetService<RulesEngine>().UpdateBuildingConstruction(this, timeElapsed);
             }
             else
             {

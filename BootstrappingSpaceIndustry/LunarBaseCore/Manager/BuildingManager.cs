@@ -51,19 +51,19 @@ namespace LunarBaseCore
             _inProgressBuildings.Add(new BuildingItem(buildingType));
         }
 
-        public void Update(TickEventArgs tick)
+        public void Update(object sender, UpdateTurn tick)
         {
             //Update all active buildings
             foreach (BuildingItem item in _activeBuildings)
             {
-                item.Update(tick);
+                item.Update(tick.Interval);
             }
 
             //Update construction for all buildings in progress
             for (int i = 0; i < _inProgressBuildings.Count; )
             {
                 //if construction has been completed
-                if (_inProgressBuildings[i].UpdateConstruction(tick))
+                if (_inProgressBuildings[i].UpdateConstruction(tick.Interval))
                 {
                     //add the building to the active list
                     _activeBuildings.Add(_inProgressBuildings[i]);
