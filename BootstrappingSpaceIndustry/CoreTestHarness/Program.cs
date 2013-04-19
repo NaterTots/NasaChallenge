@@ -17,6 +17,8 @@ namespace CoreTestHarness
 			ServiceManager.Instance.Add(new RandomGenerator());
 			ServiceManager.Instance.Add(new InventoryManager());
 			ServiceManager.Instance.Add(new ResourceLoader());
+            ServiceManager.Instance.Add(new ModuleLoader());
+            ServiceManager.Instance.Add(new BuildingLoader());
             ServiceManager.Instance.Add(new BuildingManager());
 
             //ServiceManager - Initialization
@@ -24,6 +26,8 @@ namespace CoreTestHarness
 
 			// Load resources from XML
             ServiceManager.Instance.GetService<ResourceLoader>().Load("xml/resources2.xml");
+            ServiceManager.Instance.GetService<ModuleLoader>().Load("xml/resources2.xml");
+            ServiceManager.Instance.GetService<BuildingLoader>().Load("xml/resources2.xml");
 
             //Add test data to configuration manager
 			ConfigurationManager configurationManager = ServiceManager.Instance.GetService<ConfigurationManager>();
@@ -36,8 +40,8 @@ namespace CoreTestHarness
             //Initialize inventory
 			InventoryManager inventoryManager = ServiceManager.Instance.GetService<InventoryManager>();
             inventoryManager.AddItems(configurationManager.GetResourceType("Money"), 1000);
-            inventoryManager.AddItems(configurationManager.GetResourceType("Iron"), 50);
-            inventoryManager.AddItems(configurationManager.GetResourceType("Electricity"), 220);
+            //inventoryManager.AddItems(configurationManager.GetResourceType("Iron"), 50);
+            //inventoryManager.AddItems(configurationManager.GetResourceType("Electricity"), 220);
             Console.WriteLine("Adding 1000 Money");
             Console.WriteLine("Adding 50 Iron");
             Console.WriteLine("Adding 220 Electricity");
@@ -45,14 +49,14 @@ namespace CoreTestHarness
 
             foreach (KeyValuePair<ResourceItemType, long> inventory in inventoryManager.GetSpecificInventory<ResourceItemType>())
             {
-                Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.ResourceScarcity, inventory.Key.Acquired, inventory.Value);
+                //Console.WriteLine("{0} ({1}, acquired by {2}) {3}", inventory.Key.Name, inventory.Key.ResourceScarcity, inventory.Key.Acquired, inventory.Value);
             }
             Console.WriteLine();
 
             //Modify inventory
             inventoryManager.RemoveItems(configurationManager.GetResourceType("Money"), 900);
-            inventoryManager.RemoveItems(configurationManager.GetResourceType("Iron"), 100);
-            inventoryManager.RemoveItems(configurationManager.GetResourceType("Electricity"), 300, true);
+            //inventoryManager.RemoveItems(configurationManager.GetResourceType("Iron"), 100);
+            //inventoryManager.RemoveItems(configurationManager.GetResourceType("Electricity"), 300, true);
             Console.WriteLine("Removing 900 Money");
             Console.WriteLine("Removing 100 Iron");
             Console.WriteLine("Removing 300 Electricity, regardless.");
