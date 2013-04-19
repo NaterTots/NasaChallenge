@@ -21,20 +21,6 @@ namespace LunarBase.WPF.ViewModels
 			}
 		}
 
-		private long _wallet;
-		public long Wallet
-		{
-			get
-			{
-				return _wallet;
-			}
-			set
-			{
-				_wallet = value;
-				OnPropertyChanged("Wallet");
-			}
-		}
-
 
 		private DateTime _currentDate;
 
@@ -51,11 +37,16 @@ namespace LunarBase.WPF.ViewModels
 		public ResourceViewModel()
 		{
 			// Test data
-			Wallet = 123400000;
 			CurrentDate = DateTime.Parse("02/25/2099");
 
-			
-			//TODO subscribe to the event so we can see the inventory change
+			ServiceManager.Instance.GetService<InventoryManager>().InventoryChange += ResourceViewModel_InventoryChange;
+
+			// TODO This initial call might not be necessary after testing phase
+			updateResourcesFromInventory();
+		}
+
+		void ResourceViewModel_InventoryChange(object sender, InventoryManager.InventoryChangeEventArgs e)
+		{
 			updateResourcesFromInventory();
 		}
 

@@ -70,16 +70,103 @@
       description="Solar panels are used to generate electricty from the sun."
       weight="Medium"
       price="50">
-      <fabricationProperties success="Medium">
+      <fabricationProperties success="Medium" buildtime="5">
         <materials>
           <material type="resource" name="Metal" quantity="3" />
+          <material type="resource" name="Plastic" quantity="5" />
+          <material type="resource" name="Chemicals" quantity="2" />
         </materials>
         <dependencies>
-          <dependency type="building" name="Fabricator" /> 
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+    </module>
+    <module
+  name="Electronics"
+  sources="Earth,Moon"
+  description="Elctronics are used to build items that require circuti boards and automation."
+  weight="Low"
+  price="20">
+      <fabricationProperties success="High" buildtime="2">
+        <materials>
+          <material type="resource" name="Plastic" quantity="2" />
+          <material type="resource" name="Metal" quantity="1" />
+          <material type="resource" name="Chemicals" quantity="1" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+    </module>
+    <module
+  name="Power Cells"
+  sources="Earth,Moon"
+  description="Used for items that move, such as robonauts"
+  weight="High"
+  price="100">
+      <fabricationProperties success="Medium" buildtime="3">
+        <materials>
+          <material type="resource" name="Power" quantity="5" />
+          <material type="resource" name="Metal" quantity="1" />
+          <material type="resource" name="Chemicals" quantity="1" />
+          <material type="resource" name="Water" quantity="1" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+    </module>
+    <module
+  name="Shelter Parts"
+  sources="Moon"
+  description="Used for building buildings"
+  weight="Medium"
+  price="0">
+      <fabricationProperties success="High" buildtime="3">
+        <materials>
+          <material type="resource" name="Plastic" quantity="3" />
+          <material type="resource" name="Metal" quantity="3" />
+          <material type="resource" name="Textile" quantity="3" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
         </dependencies>
       </fabricationProperties>
     </module>
   </modules>
+  <module
+  name="Mechanical Parts"
+  sources="Moon"
+  description="Used for building robonauts and other mechical products"
+  weight="Low"
+  price="0">
+    <fabricationProperties success="High" buildtime="3">
+      <materials>
+        <material type="resource" name="Plastic" quantity="2" />
+        <material type="resource" name="Metal" quantity="5" />
+        <material type="resource" name="Water" quantity="1" />
+      </materials>
+      <dependencies>
+        <dependency type="building" name="Fabricator" />
+      </dependencies>
+    </fabricationProperties>
+  </module>
+  <module
+name="Rocket Fuel"
+sources="Moon"
+description="Used for building robonauts and other mechical products"
+weight="High"
+price="0">
+    <fabricationProperties success="High" buildtime="4">
+      <materials>
+        <material type="resource" name="Helium-3" quantity="10" />
+        <material type="resource" name="Chemicals" quantity="2" />
+      </materials>
+      <dependencies>
+        <dependency type="building" name="Refinery" />
+      </dependencies>
+    </fabricationProperties>
+  </module>
   <buildings>
     <building
       name="Research Lab"
@@ -87,17 +174,17 @@
       description="Used to perform experiments in space to make money."
       weight="High"
       price="0">
-      <fabricationProperties success="Always">
+      <fabricationProperties success="Always" buildtime="5">
         <materials>
           <material type="module" name="Shelter Parts" quantity="10" />
           <material type="module" name="Electronics" quantity="5" />
           <material type="resource" name="Moon Rocks" quantity="10" />
         </materials>
         <dependencies>
-          <dependency type="building" name="Fabricator" />
+          <dependency type="user" name="Robonaut" quantity="5" />
         </dependencies>
       </fabricationProperties>
-      <buildingProperties buildTime="5">
+      <buildingProperties decayrate=".5">
         <consumables>
           <consumable type="resource" name="Power" quantity="10" />
           <consumable type="resource" name="Chemicals" quantity="2" />
@@ -107,7 +194,121 @@
         </outputs>
       </buildingProperties>
     </building>
+    <building
+      name="Refinery"
+      sources="Moon"
+      description="Used to refine raw materials into resources."
+      weight="High"
+      price="0">
+      <fabricationProperties success="Always" buildtime="5">
+        <materials>
+          <material type="module" name="Shelter Parts" quantity="10" />
+          <material type="module" name="Mechanical Parts" quantity="5" />
+        </materials>
+        <dependencies>
+          <dependency type="user" name="Robonaut" quantity="10" />
+        </dependencies>
+      </fabricationProperties>
+      <buildingProperties decayrate=".10">
+        <consumables>
+          <consumable type="resource" name="Power" quantity="15" />
+        </consumables>
+        <outputs>
+          <output type="resource" name="Metal" quantity="5" />
+          <output type="resource" name="Water" quantity="5" />
+          <output type="resource" name="Helium-3" quantity="5" />
+        </outputs>
+      </buildingProperties>
+    </building>
+    <building
+  name="Power Station (Solar)"
+  sources="Moon"
+  description="Used to create power for other buildings and processes."
+  weight="High"
+  price="0">
+      <fabricationProperties success="Always" buildtime="5">
+        <materials>
+          <material type="module" name="Shelter Parts" quantity="10" />
+          <material type="module" name="Solar Panels" quantity="4" />
+          <material type="module" name="Electronics" quantity="4" />
+        </materials>
+        <dependencies>
+          <dependency type="user" name="Robonaut" quantity="5" />
+        </dependencies>
+      </fabricationProperties>
+      <buildingProperties decayrate=".10">
+        <consumables />
+        <outputs>
+          <consumable type="resource" name="Power" quantity="50" />
+        </outputs>
+      </buildingProperties>
+    </building>
+    <building
+      name="Green House"
+      sources="Moon"
+      description="Used to refine raw materials into resources."
+      weight="High"
+      price="0">
+      <fabricationProperties success="Always" buildtime="5">
+        <materials>
+          <material type="module" name="Shelter Parts" quantity="8" />
+          <material type="module" name="Mechanical Parts" quantity="1" />
+          <material type="module" name="Moon Rock" quantity="4" />
+        </materials>
+        <dependencies>
+          <dependency type="user" name="Robonaut" quantity="3" />
+        </dependencies>
+      </fabricationProperties>
+      <buildingProperties decayrate=".10">
+        <consumables>
+          <consumable type="resource" name="Power" quantity="20" />
+        </consumables>
+        <outputs>
+          <output type="resource" name="Food" quantity="20" />
+        </outputs>
+      </buildingProperties>
+    </building>
   </buildings>
+  <users>
+    <user
+      name="Robonaut"
+      sources="Earth,Moon"
+      description="A robonaut is the robot used to build items, perform experiments, and setup the moon base."
+      weight="Medium"
+      price="500">
+      <fabricationProperties success="Always" buildtime="5">
+        <materials>
+          <material type="module" name="Robot Parts" quantity="8" />
+          <material type="module" name="Electronics" quantity="4" />
+          <material type="module" name="Power Cell" quantity="1" />
+        </materials>
+        <dependencies>
+          <dependency type="building" name="Fabricator" />
+        </dependencies>
+      </fabricationProperties>
+      <userProperties>
+        <consumables>
+          <consumable type="resource" name="Power" quantity="2" />
+        </consumables>
+      </userProperties>
+    </user>
+    <user
+      name="Astronaut"
+      sources="Earth"
+      description="These astronauts are the best of the best."
+      weight="Medium"
+      price="1500">
+      <fabricationProperties success="Always" buildtime="0">
+        <materials />
+        <dependencies />
+      </fabricationProperties>
+      <userProperties>
+        <consumables>
+          <consumable type="resource" name="Food" quantity="1" />
+        </consumables>
+      </userProperties>
+    </user>
+  </users>
 </itemTypes>
 
 <!--
