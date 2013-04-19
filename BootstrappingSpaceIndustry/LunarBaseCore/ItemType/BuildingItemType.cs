@@ -8,14 +8,49 @@ namespace LunarBaseCore
 {
     public class BuildingItemType : BuildableItemTypeBase
     {
+        #region Public Properties
+        /// <summary>
+        /// The time it takes for the building to be built.
+        /// </summary>
+        public long BuildTime
+        {
+            get
+            {
+                return long.Parse(GetProperty("buildtime"));
+            }
+        }
+        /// <summary>
+        /// The rate at which the building decays
+        /// </summary>
+        public double DecayRate
+        {
+            get
+            {
+                return double.Parse(GetProperty("decayrate"));
+            }
+        }
+
+        private IDictionary<ItemTypeBase, long> _consumableMaterials = new Dictionary<ItemTypeBase, long>();
+        public IDictionary<ItemTypeBase, long> ConsumableMaterials { get { return _consumableMaterials; } }
+
+        private IDictionary<ItemTypeBase, long> _outputMaterials = new Dictionary<ItemTypeBase, long>();
+        public IDictionary<ItemTypeBase, long> OutputMaterials { get { return _outputMaterials; } }
+        #endregion
+
 		public BuildingItemType()
 		{
 		}
 
+        /// <summary>
+        /// This function will parse xml for building item types and get the properties
+        /// </summary>
+        /// <param name="element"></param>
         public void ParseBuildingProperties(XElement element)
         {
-            SetProperty("buildtime", element.Attribute("buildTime").Value);
+            SetProperty("buildtime", element.Attribute("buildtime").Value);
+            SetProperty("decayrate", element.Attribute("decayrate").Value);
 
+            // Consumables are items that are consumed every time period to keep the building running and producing output.
             foreach (XElement part in element.Descendants("consumable"))
             {
                 Dictionary<string, string> props = new Dictionary<string, string>();
@@ -31,6 +66,8 @@ namespace LunarBaseCore
                 }
             }
 
+            // Output are items that are created or output every time period.
+            // AKA - a power station building will output power
             foreach (XElement part in element.Descendants("output"))
             {
                 Dictionary<string, string> props = new Dictionary<string, string>();
@@ -46,21 +83,5 @@ namespace LunarBaseCore
                 }
             }
         }
-
-        #region Public Properties
-        public long BuildTime
-        {
-            get
-            {
-                return long.Parse(GetProperty("buildtime"));
-            }
-        }
-
-        private IDictionary<ItemTypeBase, long> _consumableMaterials = new Dictionary<ItemTypeBase, long>();
-        public IDictionary<ItemTypeBase, long> ConsumableMaterials { get { return _consumableMaterials; } }
-
-        private IDictionary<ItemTypeBase, long> _outputMaterials = new Dictionary<ItemTypeBase, long>();
-        public IDictionary<ItemTypeBase, long> OutputMaterials { get { return _outputMaterials; } }
-        #endregion
     }
 }

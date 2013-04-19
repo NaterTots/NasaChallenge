@@ -97,7 +97,7 @@
           <dependency type="building" name="Fabricator" />
         </dependencies>
       </fabricationProperties>
-      <buildingProperties buildTime="5">
+      <buildingProperties buildtime="5" decayrate=".5">
         <consumables>
           <consumable type="resource" name="Power" quantity="10" />
           <consumable type="resource" name="Chemicals" quantity="2" />
