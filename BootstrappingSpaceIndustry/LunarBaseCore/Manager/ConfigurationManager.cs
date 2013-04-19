@@ -49,6 +49,31 @@ namespace LunarBaseCore
 			return ServiceManager.Instance.GetService<ResourceLoader>().Find(name);
         }
 
+        public ModuleItemType GetModuleType(string name)
+        {
+            return ServiceManager.Instance.GetService<ModuleLoader>().Find(name);
+        }
+
+        public BuildingItemType GetBuildingType(string name)
+        {
+            return ServiceManager.Instance.GetService<BuildingLoader>().Find(name);
+        }
+
+        public List<ResourceItemType> GetResourceTypes()
+        {
+            return ServiceManager.Instance.GetService<ResourceLoader>().FindAll();
+        }
+
+        public List<ModuleItemType> GetModuleTypes()
+        {
+            return ServiceManager.Instance.GetService<ModuleLoader>().FindAll();
+        }
+
+        public List<BuildingItemType> GetBuildingTypes()
+        {
+            return ServiceManager.Instance.GetService<BuildingLoader>().FindAll();
+        }
+
         #endregion
     }
 }

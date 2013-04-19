@@ -77,7 +77,7 @@
           <material type="resource" name="Chemicals" quantity="2" />
         </materials>
         <dependencies>
-          <dependency type="building" name="Fabricator" /> 
+          <dependency type="building" name="Fabricator" />
         </dependencies>
       </fabricationProperties>
     </module>

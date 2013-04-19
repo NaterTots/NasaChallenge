@@ -9,13 +9,13 @@ namespace LunarBaseCore
     /// <summary>
     /// The module loader loads modules from the xml
     /// </summary>
-	public class ModuleLoader : EntityManagerBase<ModuleItemType>, IService
+	public class UserLoader : EntityManagerBase<UserItemType>, IService
 	{
 		protected override string NodeName
 		{
 			get
 			{
-				return "module";
+				return "user";
 			}
 		}
 
@@ -24,9 +24,10 @@ namespace LunarBaseCore
         /// </summary>
         /// <param name="node"></param>
         /// <param name="entity"></param>
-        protected override void LoadEntityFromNode(XElement node, ModuleItemType entity)
+        protected override void LoadEntityFromNode(XElement node, UserItemType entity)
         {
             entity.ParseFabricationProperties(node.Element("fabricationProperties"));
+            entity.ParseUserProperties(node.Element("userProperties"));
         }
 
 		#region IService Members

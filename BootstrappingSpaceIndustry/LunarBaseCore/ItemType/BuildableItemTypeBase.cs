@@ -12,15 +12,63 @@ namespace LunarBaseCore
     /// </summary>
     public class BuildableItemTypeBase : ItemTypeBase, IEquatable<ItemTypeBase>
     {
+        #region Public Properties
+        /// <summary>
+        /// The success rate of the fabrication of an item.  The lower the rate, the more material it takes to create an item.
+        /// </summary>
+        public FabricationSuccess FabSuccess
+        {
+            get
+            {
+                return (FabricationSuccess)Enum.Parse(typeof(FabricationSuccess), GetProperty("success"));
+            }
+        }
+
+        /// <summary>
+        /// The time it takes for the building to be built.
+        /// </summary>
+        public long BuildTime
+        {
+            get
+            {
+                return long.Parse(GetProperty("buildtime"));
+            }
+        }
+
+        private IDictionary<ItemTypeBase, long> _requiredMaterials = new Dictionary<ItemTypeBase, long>();
+        public IDictionary<ItemTypeBase, long> RequiredMaterials { get { return _requiredMaterials; } }
+
+        private IDictionary<ItemTypeBase, long> _requiredDependencies = new Dictionary<ItemTypeBase, long>();
+        public IDictionary<ItemTypeBase, long> RequiredDependencies { get { return _requiredDependencies; } }
+
+        //TODO: initial properties are needed for 'required robots to build'
+
+        #endregion
+
+        #region Public Enums
+        public enum FabricationSuccess
+        {
+            Low,
+            Medium,
+            High,
+            Always
+        }
+        #endregion
+
         public BuildableItemTypeBase() : base()
 		{
-            //TODO: how do we load the RequiredMaterials and RequiredDependencies properties?
 		}
 
+        /// <summary>
+        /// This function will parse the xml element of fabricationProperties for buildable item types
+        /// </summary>
+        /// <param name="element"></param>
         public void ParseFabricationProperties(XElement element)
         {
             SetProperty("success", element.Attribute("success").Value);
-
+            SetProperty("buildtime", element.Attribute("buildtime").Value);
+            
+            // Materials are items that are used to build an item
             foreach (XElement part in element.Descendants("material"))
             {
                 Dictionary<string, string> props = new Dictionary<string, string>();
@@ -36,6 +84,8 @@ namespace LunarBaseCore
                 }
             }
 
+            // Dependencies are items required for the item to be built.  They are not consumed, only required to exist before this item can be fabricated.
+            // AKA - A robot cannot be built with a fabricator building.
             foreach (XElement part in element.Descendants("dependency"))
             {
                 Dictionary<string, string> props = new Dictionary<string, string>();
@@ -51,34 +101,5 @@ namespace LunarBaseCore
                 }
             }
         }
-
-        #region Public Enums
-        public enum FabricationSuccess
-        {
-            Low,
-            Medium,
-            High,
-            Always
-        }
-        #endregion
-
-        #region Public Properties
-		public FabricationSuccess FabSuccess
-		{
-			get
-			{
-                return (FabricationSuccess)Enum.Parse(typeof(FabricationSuccess), GetProperty("success"));
-			}
-		}
-
-        private IDictionary<ItemTypeBase, long> _requiredMaterials = new Dictionary<ItemTypeBase, long>();
-        public IDictionary<ItemTypeBase, long> RequiredMaterials { get { return _requiredMaterials; } }
-
-        private IDictionary<ItemTypeBase, long> _requiredDependencies = new Dictionary<ItemTypeBase, long>();
-        public IDictionary<ItemTypeBase, long> RequiredDependencies { get { return _requiredDependencies; } }
-
-        //TODO: initial properties are needed for 'required robots to build'
-
-        #endregion
     }
 }

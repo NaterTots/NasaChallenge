@@ -6,9 +6,11 @@ using System.Xml.Linq;
 
 namespace LunarBaseCore
 {
+    /// <summary>
+    /// The resource loader loads the xml for resource items
+    /// </summary>
 	public class ResourceLoader : EntityManagerBase<ResourceItemType>, IService
 	{
-
 		protected override string NodeName
 		{
 			get
@@ -19,8 +21,6 @@ namespace LunarBaseCore
 
 		protected override void LoadEntityFromNode(XElement node, ResourceItemType entity)
 		{
-			// The base already loads all the properties - do we need to load anything else?
-
 		}
 
 		#region IService Members

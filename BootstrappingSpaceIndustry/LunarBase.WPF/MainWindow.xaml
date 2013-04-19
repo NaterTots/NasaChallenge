@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LunarBase.WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="768" Width="1024">
+        Title="Lunar Base" Height="768" Width="1024">
 
     <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <!-- This grid contains the bar on the left of the screen-->
@@ -27,10 +27,11 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <Label Content="{Binding Name}" FontWeight="Bold"/>
+                                    <Label Content="{Binding ItemType.Name}" FontWeight="Bold"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding Quantity}" />
-                                        <Label Content="Kg" />
+                                        <Label Content="#" />
+                                        <Label Content="{Binding Count}" />
+                                      
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
@@ -48,11 +49,11 @@
 
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" >
+                    <!--<StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0" >
                         <Label Content="Budget:" FontWeight="Bold"/>
                         <Label Content="{Binding Wallet}" />
-                        <!--Bind to funds-->
-                    </StackPanel>
+                       
+                    </StackPanel>-->
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
                             <Label Content="Date:" FontWeight="Bold"/>
