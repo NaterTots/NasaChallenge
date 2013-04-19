@@ -10,6 +10,9 @@ namespace LunarBaseCore
         //TODO: should this be keyed by type or type ID?
         Dictionary<ItemTypeBase, long> _inventory = new Dictionary<ItemTypeBase, long>();
 
+        // Fired when the inventory changes
+        public event EventHandler<InventoryChangeEventArgs> InventoryChange;
+
         public void Initialize()
         {
             //nothing to do here - the InventoryManager should not populate itself
@@ -50,6 +53,11 @@ namespace LunarBaseCore
             {
                 _inventory.Add(rt, quantity);
             }
+
+            if (InventoryChange != null)
+            {
+                InventoryChange(this, new InventoryChangeEventArgs(rt, quantity));
+            }
         }
 
         /// <summary>
@@ -78,6 +86,11 @@ namespace LunarBaseCore
                     _inventory[rt] -= quantity;
                     retVal = true;
                 }
+
+                if (InventoryChange != null)
+                {
+                    InventoryChange(this, new InventoryChangeEventArgs(rt, quantity * -1));
+                }
             }
 
             return retVal;
@@ -99,6 +112,30 @@ namespace LunarBaseCore
                 {
                     yield return new KeyValuePair<T, long>((T)item.Key, item.Value);
                 }
+            }
+        }
+
+        public class InventoryChangeEventArgs : EventArgs
+        {
+            public InventoryChangeEventArgs(ItemTypeBase item, long quantity)
+            {
+                ItemType = item;
+                Quantity = quantity;
+            }
+
+            public ItemTypeBase ItemType
+            {
+                get;
+                private set;
+            }
+
+            /// <summary>
+            /// This is negative if the quantity of the item is reduced
+            /// </summary>
+            public long Quantity
+            {
+                get;
+                private set;
             }
         }
     }
