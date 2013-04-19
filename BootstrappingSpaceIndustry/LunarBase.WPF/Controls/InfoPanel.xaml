@@ -22,11 +22,11 @@
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
                 <Label Content="Date:" FontWeight="Bold"/>
-                <Label Content="{Binding CurrentDate}" />
+            <Label Content="{Binding CurrentGameDate}" />
                 <!--Bind to date-->
             </StackPanel>
 
-            <Button Grid.Row="2" Content="Next Turn" Height="25" Width="80" />
+        <Button Grid.Row="2" Content="Next Turn" Height="25" Width="80" Command="{Binding NextTurnCommand}" />
 
         </Grid>
     

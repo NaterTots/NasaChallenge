@@ -7,5 +7,6 @@
         <vm:ResourceViewModel x:Key="resourceVM" />
         <vm:SchematicsViewModel x:Key="schematicsVM" />
         <vm:BuildQueueViewModel x:Key="buildQueueVM" />
+        <vm:InfoPanelViewModel x:Key="infoPanelVM" />
     </Application.Resources>
 </Application>

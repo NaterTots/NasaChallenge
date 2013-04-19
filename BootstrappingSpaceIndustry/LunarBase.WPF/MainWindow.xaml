@@ -2,9 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:LunarBase.WPF.Controls"
-        Title="Lunar Base" Height="768" Width="1024">
+        Title="Lunar Base" Height="768" Width="1024" ResizeMode="NoResize">
 
-    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="6*" />
+        </Grid.ColumnDefinitions>
         <!-- This grid contains the bar on the left of the screen-->
         <Border DockPanel.Dock="Left" BorderThickness="0,0,3,0" BorderBrush="Black">
             <Grid  Background="Beige" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -15,26 +19,30 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <!-- This grid contains the top half of the bar; resources, robonauts, etc -->
+                <!-- This UserControl contains the top half of the bar; resources, robonauts, etc -->
                 <controls:Resources DataContext="{StaticResource resourceVM}" />
 
                 <!-- This grid contains the bottom half of the bar; funds, date, Next Turn button -->
-                <controls:InfoPanel Grid.Row="1"/>
+                <controls:InfoPanel Grid.Row="1" DataContext="{StaticResource infoPanelVM}"/>
             </Grid>
         </Border>
         
-        
-        <!--This UserControl contains all the schematics display code; see Controls\Schematics.xaml-->
-        <controls:Schematics DockPanel.Dock="Top" DataContext="{StaticResource schematicsVM}" Height="150"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <!--This UserControl contains all the schematics display code; see Controls\Schematics.xaml-->
+            <controls:Schematics DataContext="{StaticResource schematicsVM}"/>
 
-        <!--This UserControl contains all the build queue display code; see Controls\BuildQueue.xaml-->
-        <controls:BuildQueue DockPanel.Dock="Top" DataContext="{StaticResource buildQueueVM}" Height="150" />
+            <!--This UserControl contains all the build queue display code; see Controls\BuildQueue.xaml-->
+            <controls:BuildQueue Grid.Row="1" DataContext="{StaticResource buildQueueVM}"  />
             
-        
-        <!--The canvas contains the things that have been constructed. As this is the last item in the dockpanel, it fills.-->
-        <Canvas >
+            <!--The canvas contains the things that have been constructed. As this is the last item in the dockpanel, it fills.-->
+            <Canvas Grid.Row="2">
             
-        </Canvas>
-        
-    </DockPanel>
+            </Canvas>
+        </Grid>
+    </Grid>
 </Window>

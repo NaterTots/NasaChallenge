@@ -66,7 +66,9 @@
     <Compile Include="Controls\Schematics.xaml.cs">
       <DependentUpon>Schematics.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\BuildQueueViewModel.cs" />
+    <Compile Include="ViewModels\InfoPanelViewModel.cs" />
     <Compile Include="ViewModels\ResourceViewModel.cs" />
     <Compile Include="ViewModels\SchematicsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

@@ -12,11 +12,22 @@ namespace LunarBaseCore
 
     public class GameEngine
     {
-        LunarTime timeEngine;
+        private LunarTime timeEngine;
 
-        long totalTime;
+        private long totalTime;
 
-        DateTime currentDate;
+        private DateTime _currentGameDate;
+		public DateTime CurrentGameDate
+		{
+			get
+			{
+				return _currentGameDate;
+			}
+			set
+			{
+				_currentGameDate = value;
+			}
+		}
 
         public event EventHandler<UpdateTurn> UpdateEverything;
 
@@ -32,7 +43,7 @@ namespace LunarBaseCore
             allBuildings = new BuildingManager();
             UpdateEverything = new EventHandler<UpdateTurn>(allBuildings.Update);
 
-            currentDate = new DateTime(2050, 1, 1);
+            _currentGameDate = new DateTime(2050, 1, 1);
         }
 
         
@@ -82,31 +93,31 @@ namespace LunarBaseCore
 
             if (curIntervalType == intervalType.days)
             {
-                currentDate = currentDate.AddDays(timeToPass);
+                _currentGameDate = _currentGameDate.AddDays(timeToPass);
             }
 
             else if (curIntervalType == intervalType.weeks)
             {
-                currentDate = currentDate.AddDays(timeToPass * 7);
+                _currentGameDate = _currentGameDate.AddDays(timeToPass * 7);
                 timeToPass = timeToPass * 7;
             }
 
             else if (curIntervalType == intervalType.months)
             {
-                currentDate = currentDate.AddMonths(timeToPass);
+                _currentGameDate = _currentGameDate.AddMonths(timeToPass);
                 timeToPass = timeToPass * 30;
             }
 
             else if (curIntervalType == intervalType.years)
             {
-                currentDate = currentDate.AddYears(timeToPass);
+                _currentGameDate = _currentGameDate.AddYears(timeToPass);
                 timeToPass = timeToPass * 365;
             }
 
             if (timeToPass == 0)
             {
                 timeToPass = 30;
-                currentDate = currentDate.AddDays(timeToPass);
+                _currentGameDate = _currentGameDate.AddDays(timeToPass);
             }
             //The update method should just go off of the number of days passed. Don't need to worry about months/years
             UpdateEverything(this, new UpdateTurn(timeToPass));
